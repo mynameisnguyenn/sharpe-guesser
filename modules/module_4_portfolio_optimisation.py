@@ -21,7 +21,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.optimize import minimize
-import yfinance as yf
+
+from data_loader import fetch_multi_prices
 
 TRADING_DAYS = 252
 
@@ -32,7 +33,7 @@ TRADING_DAYS = 252
 
 def get_portfolio_data(tickers: list, start: str, end: str):
     """Fetch returns and compute expected returns / covariance."""
-    prices = yf.download(tickers, start=start, end=end, progress=False)["Close"]
+    prices = fetch_multi_prices(tickers, start, end)
     returns = prices.pct_change().dropna()
 
     # Annualised expected returns (historical mean — crude but standard)

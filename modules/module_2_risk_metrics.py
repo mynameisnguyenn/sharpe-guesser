@@ -23,7 +23,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import stats
-import yfinance as yf
+
+from data_loader import fetch_prices
 
 TRADING_DAYS = 252
 
@@ -336,7 +337,7 @@ def risk_report(ticker: str, start: str, end: str, annual_rf: float = 0.05):
     print(f"  RISK REPORT: {ticker}  ({start} to {end})")
     print(f"{'='*60}")
 
-    prices = yf.download(ticker, start=start, end=end, progress=False)["Close"].squeeze()
+    prices = fetch_prices(ticker, start, end)
     returns = prices.pct_change().dropna()
 
     # Sharpe & variants

@@ -21,7 +21,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import stats
-import yfinance as yf
+
+from data_loader import fetch_prices, fetch_multi_prices
 
 
 # ---------------------------------------------------------------------------
@@ -156,7 +157,7 @@ def correlation_analysis(tickers: list, start: str, end: str):
     This is the foundation of portfolio construction: which assets
     move together and which provide diversification.
     """
-    df = yf.download(tickers, start=start, end=end, progress=False)["Close"]
+    df = fetch_multi_prices(tickers, start, end)
     returns = df.pct_change().dropna()
 
     corr = returns.corr()
@@ -241,7 +242,7 @@ def main():
 
     # Fetch SPY data
     ticker = "SPY"
-    prices = yf.download(ticker, start="2018-01-01", end="2025-12-31", progress=False)["Close"].squeeze()
+    prices = fetch_prices(ticker, start="2018-01-01", end="2025-12-31")
     returns = prices.pct_change().dropna()
 
     # 1. Descriptive stats

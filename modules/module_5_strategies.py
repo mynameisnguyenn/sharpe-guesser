@@ -26,8 +26,9 @@ Run:
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import yfinance as yf
 from scipy import stats
+
+from data_loader import fetch_prices, fetch_multi_prices
 
 TRADING_DAYS = 252
 
@@ -165,7 +166,8 @@ class SimpleBacktester:
         ax2.grid(True, alpha=0.3)
 
         plt.tight_layout()
-        filename = f"module5_{self.name.replace(' ', '_')}.png"
+        safe_name = self.name.replace(' ', '_').replace('/', '_').replace(':', '')
+        filename = f"module5_{safe_name}.png"
         plt.savefig(filename, dpi=120)
         plt.close()
         print(f"  Saved: {filename}")
@@ -213,7 +215,7 @@ def momentum_signal(
 
 def run_momentum(tickers: list, start: str, end: str) -> SimpleBacktester:
     """Run a simple momentum strategy."""
-    prices = yf.download(tickers, start=start, end=end, progress=False)["Close"]
+    prices = fetch_multi_prices(tickers, start, end)
     returns = prices.pct_change().dropna()
 
     positions = momentum_signal(prices)
@@ -321,7 +323,7 @@ def run_pairs_trading(
     end: str,
 ) -> SimpleBacktester:
     """Run a simple pairs trading strategy."""
-    prices = yf.download([ticker_a, ticker_b], start=start, end=end, progress=False)["Close"]
+    prices = fetch_multi_prices([ticker_a, ticker_b], start, end)
     returns = prices.pct_change().dropna()
 
     positions, z = pairs_trading_signal(

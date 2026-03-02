@@ -19,8 +19,9 @@ Concepts covered:
 
 import numpy as np
 import pandas as pd
-import yfinance as yf
 import matplotlib.pyplot as plt
+
+from data_loader import fetch_prices as _fetch_prices
 
 
 # ---------------------------------------------------------------------------
@@ -28,11 +29,11 @@ import matplotlib.pyplot as plt
 # ---------------------------------------------------------------------------
 # As a risk associate you probably pull data from Bloomberg or an internal
 # data lake. yfinance is the free equivalent — same idea, different pipe.
+# We use data_loader which tries yfinance first, then falls back to sample data.
 
 def fetch_prices(ticker: str, start: str, end: str) -> pd.Series:
     """Download adjusted close prices for a single ticker."""
-    df = yf.download(ticker, start=start, end=end, progress=False)
-    return df["Close"].squeeze()
+    return _fetch_prices(ticker, start, end)
 
 
 # ---------------------------------------------------------------------------

@@ -23,7 +23,8 @@ matplotlib.use("Agg")  # non-interactive backend so it works headless too
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import yfinance as yf
+
+from data_loader import fetch_prices
 
 TRADING_DAYS = 252
 
@@ -72,8 +73,7 @@ def fetch_random_challenge(annual_rf: float = 0.05):
 
     for ticker in TICKER_POOL:
         try:
-            df = yf.download(ticker, start=start, end=end, progress=False)
-            prices = df["Close"].squeeze()
+            prices = fetch_prices(ticker, start, end)
             if len(prices) < 100:
                 continue
             rets = prices.pct_change().dropna()

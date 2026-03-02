@@ -24,7 +24,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
-import yfinance as yf
+
+from data_loader import fetch_prices, fetch_multi_prices
 
 TRADING_DAYS = 252
 
@@ -35,13 +36,13 @@ TRADING_DAYS = 252
 
 def fetch_returns(ticker: str, start: str, end: str) -> pd.Series:
     """Download daily returns for a ticker."""
-    prices = yf.download(ticker, start=start, end=end, progress=False)["Close"].squeeze()
+    prices = fetch_prices(ticker, start, end)
     return prices.pct_change().dropna()
 
 
 def fetch_multi_returns(tickers: list, start: str, end: str) -> pd.DataFrame:
     """Download daily returns for multiple tickers."""
-    prices = yf.download(tickers, start=start, end=end, progress=False)["Close"]
+    prices = fetch_multi_prices(tickers, start, end)
     return prices.pct_change().dropna()
 
 
@@ -126,7 +127,7 @@ def build_factor_proxies(start: str, end: str) -> pd.DataFrame:
     data library, but ETFs give you the intuition.
     """
     tickers = ["SPY", "IWM", "IWD", "IWF"]
-    prices = yf.download(tickers, start=start, end=end, progress=False)["Close"]
+    prices = fetch_multi_prices(tickers, start, end)
     rets = prices.pct_change().dropna()
 
     factors = pd.DataFrame(index=rets.index)
