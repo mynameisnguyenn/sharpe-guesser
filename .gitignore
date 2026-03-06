@@ -1,5 +1,29 @@
-venv/
+# Generated output
+*.png
+round_*.png
+
+# Python
 __pycache__/
 *.pyc
-*.png
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# pytest
+.pytest_cache/
+
+# OS
 .DS_Store
+Thumbs.db

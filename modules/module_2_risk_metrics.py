@@ -88,37 +88,6 @@ def compare_var_methods(daily_returns: pd.Series, name: str = ""):
     print(f"\n  VaR Comparison for {name}:")
     print(f"  {'Method':<20} {'95% VaR':>10} {'99% VaR':>10}")
     print(f"  {'-'*42}")
-
-    for confidence in [0.95, 0.99]:
-        hist = var_historical(daily_returns, confidence)
-        para = var_parametric(daily_returns, confidence)
-        mc = var_monte_carlo(daily_returns, confidence)
-
-        if confidence == 0.95:
-            print(f"  {'Historical':<20} {hist:>10.2%} ", end="")
-        else:
-            print(f"{hist:>10.2%}")
-
-        if confidence == 0.95:
-            print(f"  {'Parametric':<20} {para:>10.2%} ", end="")
-        else:
-            print(f"{para:>10.2%}")
-
-        if confidence == 0.95:
-            print(f"  {'Monte Carlo (t)':<20} {mc:>10.2%} ", end="")
-        else:
-            print(f"{mc:>10.2%}")
-
-    # Proper table format
-    for confidence_label, conf in [("95%", 0.95), ("99%", 0.99)]:
-        hist = var_historical(daily_returns, conf)
-        para = var_parametric(daily_returns, conf)
-        mc = var_monte_carlo(daily_returns, conf)
-
-    # Reprint cleanly
-    print(f"\n  VaR Comparison for {name}:")
-    print(f"  {'Method':<20} {'95% VaR':>10} {'99% VaR':>10}")
-    print(f"  {'-'*42}")
     for method_name, func in [("Historical", var_historical),
                                ("Parametric", var_parametric),
                                ("Monte Carlo (t)", var_monte_carlo)]:
@@ -340,8 +309,11 @@ def risk_report(ticker: str, start: str, end: str, annual_rf: float = 0.05):
     returns = prices.pct_change().dropna()
 
     # Sharpe & variants
-    from sharpe_101 import sharpe_ratio
-    sr = sharpe_ratio(returns, annual_rf)
+    daily_rf = annual_rf / TRADING_DAYS
+    excess = returns - daily_rf
+    ann_excess = excess.mean() * TRADING_DAYS
+    ann_vol = returns.std() * np.sqrt(TRADING_DAYS)
+    sr = ann_excess / ann_vol if ann_vol > 0 else 0.0
     sortino = sortino_ratio(returns, annual_rf)
     calmar = calmar_ratio(prices, annual_rf)
 

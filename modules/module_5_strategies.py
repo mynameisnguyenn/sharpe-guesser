@@ -165,7 +165,9 @@ class SimpleBacktester:
         ax2.grid(True, alpha=0.3)
 
         plt.tight_layout()
-        filename = f"module5_{self.name.replace(' ', '_')}.png"
+        import re
+        safe_name = re.sub(r'[^\w\-]', '_', self.name)
+        filename = f"module5_{safe_name}.png"
         plt.savefig(filename, dpi=120)
         plt.close()
         print(f"  Saved: {filename}")

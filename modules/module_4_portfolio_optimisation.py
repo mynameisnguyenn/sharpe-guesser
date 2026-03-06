@@ -441,7 +441,7 @@ def main():
     for ticker in tickers:
         eq_r = eq_mu[ticker] if ticker in eq_mu.index else 0
         bl_r = bl_mu[ticker] if ticker in bl_mu.index else 0
-        print(f"      {ticker:<6} : Equilibrium {eq_r:>7.2%}  →  BL {bl_r:>7.2%}")
+        print(f"      {ticker:<6} : Equilibrium {eq_r:>7.2%}  ->  BL {bl_r:>7.2%}")
 
     # Efficient frontier plot
     plot_efficient_frontier(mu, cov, tickers, rf)

@@ -4,4 +4,4 @@ yfinance
 matplotlib
 scipy
 statsmodels
-scikit-learn
+# scikit-learn — not currently used; add back for Phase 4 signal research (feature importance, ML models)
