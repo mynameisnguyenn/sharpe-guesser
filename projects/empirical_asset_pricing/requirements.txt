@@ -6,3 +6,4 @@ scikit-learn
 scipy
 statsmodels
 pyarrow  # for parquet caching
+lxml     # for pd.read_html (S&P 500 ticker scrape)

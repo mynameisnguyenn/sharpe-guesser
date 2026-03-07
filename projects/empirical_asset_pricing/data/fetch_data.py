@@ -41,8 +41,14 @@ DATA_DIR = Path(__file__).parent
 
 def get_sp500_tickers() -> list[str]:
     """Fetch current S&P 500 tickers from Wikipedia."""
+    import io
+    import urllib.request
+
     url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
-    tables = pd.read_html(url)
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req) as resp:
+        html = resp.read().decode("utf-8")
+    tables = pd.read_html(io.StringIO(html))
     # The first table on the page has the ticker list
     sp500_table = tables[0]
     tickers = sp500_table["Symbol"].tolist()
