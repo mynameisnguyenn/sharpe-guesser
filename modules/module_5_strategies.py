@@ -165,12 +165,7 @@ class SimpleBacktester:
         ax2.grid(True, alpha=0.3)
 
         plt.tight_layout()
-        import re
-        safe_name = re.sub(r'[^\w\-]', '_', self.name)
-        filename = f"module5_{safe_name}.png"
-        plt.savefig(filename, dpi=120)
         plt.close()
-        print(f"  Saved: {filename}")
 
 
 # ---------------------------------------------------------------------------
@@ -354,10 +349,7 @@ def run_pairs_trading(
     ax2.legend()
 
     plt.tight_layout()
-    filename = f"module5_pairs_{ticker_a}_{ticker_b}_spread.png"
-    plt.savefig(filename, dpi=120)
     plt.close()
-    print(f"  Saved: {filename}")
 
     return bt
 
@@ -379,9 +371,7 @@ def compare_strategies(strategies: list):
     ax.legend()
     ax.grid(True, alpha=0.3)
     plt.tight_layout()
-    plt.savefig("module5_strategy_comparison.png", dpi=120)
     plt.close()
-    print("  Saved: module5_strategy_comparison.png")
 
 
 # ---------------------------------------------------------------------------

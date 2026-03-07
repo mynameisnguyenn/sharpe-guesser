@@ -362,9 +362,7 @@ def plot_efficient_frontier(
     ax.legend()
     ax.grid(True, alpha=0.3)
     plt.tight_layout()
-    plt.savefig("module4_efficient_frontier.png", dpi=120)
     plt.close()
-    print("  Saved: module4_efficient_frontier.png")
 
 
 def print_portfolio(result: dict, tickers: list, name: str = ""):

@@ -139,10 +139,7 @@ def plot_var_cvar(daily_returns: pd.Series, confidence: float = 0.95, name: str 
     ax.set_ylabel("Density")
     ax.legend()
     plt.tight_layout()
-    filename = f"module2_{name}_var_cvar.png"
-    plt.savefig(filename, dpi=120)
     plt.close()
-    print(f"  Saved: {filename}")
 
 
 # ---------------------------------------------------------------------------
@@ -231,10 +228,7 @@ def plot_drawdowns(prices: pd.Series, name: str = ""):
     ax2.set_xlabel("Date")
 
     plt.tight_layout()
-    filename = f"module2_{name}_drawdowns.png"
-    plt.savefig(filename, dpi=120)
     plt.close()
-    print(f"  Saved: {filename}")
 
 
 # ---------------------------------------------------------------------------
@@ -265,7 +259,7 @@ def sortino_ratio(daily_returns: pd.Series, annual_rf: float = 0.05) -> float:
     excess = daily_returns - daily_rf
     ann_excess = excess.mean() * TRADING_DAYS
     dd = downside_deviation(daily_returns, annual_rf)
-    if dd == 0:
+    if dd == 0 or np.isnan(dd):
         return 0.0
     return ann_excess / dd
 

@@ -237,13 +237,12 @@ class TestPrintComparisonTable:
 # ---------------------------------------------------------------------------
 
 class TestSaveComparisonChart:
-    def test_saves_chart(self, summaries):
+    def test_closes_chart(self, summaries):
         with patch("factor_dashboard.plt") as mock_plt:
             mock_fig = MagicMock()
             mock_ax = MagicMock()
             mock_plt.subplots.return_value = (mock_fig, mock_ax)
             save_comparison_chart(summaries, window=63)
-            mock_plt.savefig.assert_called_once_with("factor_comparison.png", dpi=120)
             mock_plt.close.assert_called_once()
 
 

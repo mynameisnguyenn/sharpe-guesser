@@ -235,10 +235,7 @@ def plot_rolling_beta(
     ax.set_ylabel("Beta")
     ax.legend()
     plt.tight_layout()
-    filename = f"module3_{stock_name}_rolling_beta.png"
-    plt.savefig(filename, dpi=120)
     plt.close()
-    print(f"  Saved: {filename}")
 
 
 # ---------------------------------------------------------------------------
@@ -278,10 +275,7 @@ def plot_residual_analysis(model_result: dict, name: str = ""):
 
     plt.suptitle(f"{name} — Residual Analysis", y=1.02)
     plt.tight_layout()
-    filename = f"module3_{name}_residuals.png"
-    plt.savefig(filename, dpi=120)
     plt.close()
-    print(f"  Saved: {filename}")
 
 
 # ---------------------------------------------------------------------------

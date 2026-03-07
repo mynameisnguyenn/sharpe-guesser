@@ -188,13 +188,12 @@ class TestSortinoRatio:
         result = sortino_ratio(daily_returns, annual_rf=0.0)
         assert result > 0
 
-    def test_zero_downside_returns_nan(self):
+    def test_zero_downside_returns_zero(self):
         # All positive returns => no negative excess returns => downside std is NaN
-        # sortino_ratio divides by NaN (since NaN != 0), producing NaN.
-        # This is a known edge case in the current implementation.
+        # sortino_ratio guards against NaN downside deviation, returning 0.0.
         rets = pd.Series([0.01, 0.02, 0.015, 0.005, 0.01])
         result = sortino_ratio(rets, annual_rf=0.0)
-        assert np.isnan(result)
+        assert result == 0.0
 
     def test_all_negative_returns(self):
         rets = pd.Series([-0.01, -0.02, -0.005, -0.015, -0.01])

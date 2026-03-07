@@ -27,3 +27,10 @@ env/
 # OS
 .DS_Store
 Thumbs.db
+
+# Project data cache
+projects/*/data/*.csv
+projects/*/data/*.pkl
+projects/*/data/*.parquet
+projects/*/results/*.png
+projects/*/results/*.csv

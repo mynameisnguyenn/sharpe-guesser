@@ -1,0 +1,8 @@
+numpy
+pandas
+yfinance
+matplotlib
+scikit-learn
+scipy
+statsmodels
+pyarrow  # for parquet caching

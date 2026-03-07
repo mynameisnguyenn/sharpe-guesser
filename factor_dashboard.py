@@ -137,10 +137,7 @@ def analyse_ticker(ticker, spy_returns, factors, start, end, rf, window):
     axes[2].set_ylabel("Density")
 
     plt.tight_layout()
-    chart_path = f"{ticker}_factor_dashboard.png"
-    plt.savefig(chart_path, dpi=120)
     plt.close()
-    print(f"\n  Saved: {chart_path}")
 
     return {
         "ticker": ticker,
@@ -181,9 +178,7 @@ def save_comparison_chart(summaries, window):
     ax.set_ylabel("Beta")
     ax.legend()
     plt.tight_layout()
-    plt.savefig("factor_comparison.png", dpi=120)
     plt.close()
-    print(f"\n  Saved: factor_comparison.png")
 
 
 # ---------------------------------------------------------------------------

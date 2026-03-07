@@ -17,6 +17,9 @@ Concepts covered:
     6. Rolling Sharpe — how it changes over time
 """
 
+import matplotlib
+matplotlib.use("Agg")
+
 import numpy as np
 import pandas as pd
 import yfinance as yf
@@ -134,7 +137,7 @@ def sharpe_ratio(
     excess = excess_returns(daily_returns, annual_rf)
     ann_ret = annualized_return(excess)
     ann_vol = annualized_volatility(excess)
-    if ann_vol == 0:
+    if ann_vol < 1e-10:
         return 0.0
     return ann_ret / ann_vol
 
@@ -218,9 +221,7 @@ def analyse_ticker(ticker: str, start: str, end: str, annual_rf: float = 0.05):
     axes[2].legend()
 
     plt.tight_layout()
-    plt.savefig(f"{ticker}_sharpe_analysis.png", dpi=150)
-    plt.show()
-    print(f"  Chart saved to {ticker}_sharpe_analysis.png\n")
+    plt.close()
 
 
 # ---------------------------------------------------------------------------

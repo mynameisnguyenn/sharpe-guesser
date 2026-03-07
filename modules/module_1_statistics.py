@@ -108,10 +108,7 @@ def plot_distribution_vs_normal(daily_returns: pd.Series, name: str = ""):
     axes[1].get_lines()[0].set_markersize(3)
 
     plt.tight_layout()
-    filename = f"module1_{name.replace(' ', '_')}_distribution.png"
-    plt.savefig(filename, dpi=120)
     plt.close()
-    print(f"  Saved: {filename}")
 
 
 # ---------------------------------------------------------------------------
@@ -185,10 +182,7 @@ def correlation_analysis(tickers: list, start: str, end: str):
     plt.colorbar(im)
     ax.set_title("Return Correlation Matrix")
     plt.tight_layout()
-    filename = "module1_correlation_heatmap.png"
-    plt.savefig(filename, dpi=120)
     plt.close()
-    print(f"\n  Saved: {filename}")
 
     return corr, cov
 
