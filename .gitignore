@@ -1,5 +1,4 @@
 # Generated output
-*.png
 round_*.png
 
 # Python
@@ -32,6 +31,7 @@ Thumbs.db
 projects/*/data/*.csv
 projects/*/data/*.pkl
 projects/*/data/*.parquet
-projects/*/results/*.png
+# Allow result charts to be tracked (needed for RESULTS.md on GitHub)
+# projects/*/results/*.png
 projects/*/results/*.csv
 .claude/
