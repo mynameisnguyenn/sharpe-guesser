@@ -35,3 +35,7 @@ projects/*/data/*.parquet
 # projects/*/results/*.png
 projects/*/results/*.csv
 .claude/
+
+# Books (copyrighted material — don't push)
+books/*.pdf
+*.pdf
