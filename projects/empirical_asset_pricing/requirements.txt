@@ -1,9 +1,9 @@
-numpy
-pandas
-yfinance
-matplotlib
-scikit-learn
-scipy
-statsmodels
-pyarrow  # for parquet caching
-lxml     # for pd.read_html (S&P 500 ticker scrape)
+numpy>=1.24
+pandas>=2.0
+yfinance>=0.2.28
+matplotlib>=3.7
+scikit-learn>=1.3
+scipy>=1.10
+statsmodels>=0.14
+pyarrow>=14.0  # for parquet caching
+lxml>=4.9      # for pd.read_html (S&P 500 ticker scrape)

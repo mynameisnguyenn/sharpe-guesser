@@ -281,10 +281,7 @@ def expanding_window_predict(
 # These wrap the model functions into the signature that expanding_window_predict
 # expects. Use these directly if you don't need custom hyperparameters.
 
-# TODO: Add a gradient-boosted tree model (XGBoost or LightGBM). The Kelly
-#       paper finds that boosted trees perform as well as neural networks
-#       and are easier to tune. This would be a natural next step.
-
-# TODO: Add a simple OLS baseline. Comparing ML models to plain OLS helps
-#       you understand how much of the predictive power comes from
-#       nonlinearity vs. feature selection vs. regularization.
+# Potential extensions:
+#   - XGBoost or LightGBM for faster gradient boosting
+#   - Simple OLS baseline to isolate how much value comes from nonlinearity
+#     vs. feature selection vs. regularization

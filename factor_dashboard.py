@@ -15,15 +15,18 @@ import matplotlib
 matplotlib.use("Agg")
 
 import sys
-import os
+from pathlib import Path
 import argparse
 
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Add project root to path so we can import from modules/
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# Ensure repo root is on sys.path so `modules/` is importable
+# (needed when running from a different working directory)
+_REPO_ROOT = str(Path(__file__).resolve().parent)
+if _REPO_ROOT not in sys.path:
+    sys.path.insert(0, _REPO_ROOT)
 
 from modules.module_3_factor_models import (
     capm_regression,

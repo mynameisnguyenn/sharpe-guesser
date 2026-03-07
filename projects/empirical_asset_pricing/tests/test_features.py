@@ -285,6 +285,82 @@ class TestBuildInteractions:
 # Portfolio and evaluation tests (with synthetic data)
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Expanding window predict test
+# ---------------------------------------------------------------------------
+
+try:
+    import sklearn  # noqa: F401
+    _HAS_SKLEARN = True
+except ImportError:
+    _HAS_SKLEARN = False
+
+
+@pytest.mark.skipif(not _HAS_SKLEARN, reason="scikit-learn not installed")
+class TestExpandingWindowPredict:
+    @pytest.fixture
+    def synthetic_panel(self):
+        """Synthetic panel data: 5 stocks over 48 months with known signal."""
+        np.random.seed(42)
+        dates = pd.date_range("2020-01-31", periods=48, freq="ME")
+        tickers = [f"S{i}" for i in range(5)]
+        idx = pd.MultiIndex.from_product([dates, tickers], names=["date", "ticker"])
+        signal = np.random.normal(0, 1, len(idx))
+        # Target has a small true relationship with signal (beta=0.01)
+        noise = np.random.normal(0, 0.05, len(idx))
+        target = 0.01 * signal + noise
+        return pd.DataFrame({"feat": signal, "target": target}, index=idx)
+
+    def test_no_lookahead_bias(self, synthetic_panel):
+        """Predictions at time t should only use data from periods < t."""
+        from src.models import expanding_window_predict
+        from sklearn.linear_model import LinearRegression
+
+        result = expanding_window_predict(
+            synthetic_panel,
+            features=["feat"],
+            target="target",
+            model_fn=lambda X, y: LinearRegression().fit(X, y),
+            min_periods=6,
+        )
+
+        # Each predicted date should be >= the (min_periods+1)-th date
+        pred_dates = result.index.get_level_values(0).unique().sort_values()
+        all_dates = synthetic_panel.index.get_level_values(0).unique().sort_values()
+        assert pred_dates[0] >= all_dates[6]
+
+    def test_output_shape(self, synthetic_panel):
+        from src.models import expanding_window_predict
+        from sklearn.linear_model import LinearRegression
+
+        result = expanding_window_predict(
+            synthetic_panel,
+            features=["feat"],
+            target="target",
+            model_fn=lambda X, y: LinearRegression().fit(X, y),
+            min_periods=6,
+        )
+
+        assert "prediction" in result.columns
+        assert "actual" in result.columns
+        # min_periods=6 but also needs >=50 training rows (5 stocks × 10 months)
+        # so predictions start at month 10: (48 - 10) × 5 = 190
+        assert len(result) == (48 - 10) * 5
+
+    def test_too_few_periods_raises(self, synthetic_panel):
+        from src.models import expanding_window_predict
+        from sklearn.linear_model import LinearRegression
+
+        with pytest.raises(ValueError, match="Need at least"):
+            expanding_window_predict(
+                synthetic_panel,
+                features=["feat"],
+                target="target",
+                model_fn=lambda X, y: LinearRegression().fit(X, y),
+                min_periods=100,
+            )
+
+
 class TestPortfolioFunctions:
     @pytest.fixture
     def synthetic_predictions(self):

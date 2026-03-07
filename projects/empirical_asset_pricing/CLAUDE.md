@@ -46,11 +46,16 @@ python run_pipeline.py    # first run downloads ~500 stocks (cached after)
 - Cached data in `data/*.parquet` (gitignored)
 - Results (PNGs) in `results/` (gitignored via *.png in root .gitignore — may want to track these)
 
-## Latest results (2026-03-07, pre-upgrade)
-- Elastic Net L/S: Sharpe 0.12, annual return 7.2%, max DD -35.7%
-- Random Forest L/S: Sharpe 0.11, annual return 6.8%, max DD -26.3%
-- Decile monotonicity present in both models (D10 ~24% vs D1 ~17% annualized)
-- 501 stocks downloaded, 2 failed (Q, SNDK — delisted)
+## Latest results (2026-03-07, post-upgrade)
+- 501 stocks, 178 months, 28 features (7 base + 21 interactions), 3 models
+- Elastic Net L/S: Sharpe -0.09, annual return 3.5%, max DD -37.9%
+- Random Forest L/S: Sharpe 0.07, annual return 6.1%, max DD -22.6%
+- Gradient Boosting L/S: Sharpe 0.08, annual return 6.2%, max DD -31.0%
+- OOS R² negative for all models (-1.7% to -2.2%) — expected with simplified features
+- FF alpha borderline significant for RF/GBT (p=0.054, ~8.5% annualized)
+- Turnover ~70% — net-of-cost Sharpe goes negative for all models (10 bps one-way)
+- Decile monotonicity present: D10 ~25% vs D3 ~13% annualized
+- Predictions cached to data/preds_*.parquet — reruns complete in ~30 sec
 
 ## Evaluation framework (added 2026-03-06)
 - OOS R² computed for all 3 models

@@ -200,16 +200,15 @@ class TestSortinoRatio:
         result = sortino_ratio(rets, annual_rf=0.0)
         assert result < 0
 
-    def test_sortino_gte_sharpe_for_positive_skew(self):
-        # For positively skewed returns, sortino should be >= sharpe
+    def test_sortino_gte_sharpe_for_positive_mean(self):
+        # With symmetric returns and positive mean, downside vol < total vol,
+        # so Sortino should exceed Sharpe
         np.random.seed(42)
-        rets = pd.Series(np.abs(np.random.normal(0.001, 0.01, 200)))
+        rets = pd.Series(np.random.normal(0.001, 0.01, 500))
         from sharpe_101 import sharpe_ratio
         sr = sharpe_ratio(rets, annual_rf=0.0)
         so = sortino_ratio(rets, annual_rf=0.0)
-        # With all positive returns, downside dev < total vol, so sortino > sharpe
-        # (as long as there's any negative excess return after rf subtraction)
-        assert so >= sr or True  # may not hold exactly with rf=0 and all positive
+        assert so >= sr
 
 
 # ---------------------------------------------------------------------------

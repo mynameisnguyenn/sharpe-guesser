@@ -31,6 +31,20 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
+### [Volatility Forecasting & Vol-Targeting](projects/vol_forecasting/)
+Compares four vol forecast models on SPY (2005-2024) and implements the vol-targeting strategy from Paleologo Ch 6.
+
+- **4 models**: EWMA (RiskMetrics), GARCH(1,1), HAR-RV (Corsi 2009), VIX implied
+- **Proper evaluation**: QLIKE loss function, Mincer-Zarnowitz unbiasedness regression, MZ R² of 45-51%
+- **Vol-targeting backtest**: Scales position by forecast vol → max drawdown drops from -43% to -16%, kurtosis from 12.3 to 2.4
+- **40 tests**: All synthetic data, no network calls
+
+```bash
+pip install arch
+cd projects/vol_forecasting
+python run_pipeline.py
+```
+
 ## Learning Toolkit
 
 | File / Directory | What it teaches |
@@ -71,5 +85,6 @@ Risk and data professionals who want to learn programming through finance concep
 ## References
 
 - Gu, Kelly, Xiu (2020) — "Empirical Asset Pricing via Machine Learning", *Review of Financial Studies*
-- Paleologo — *Advanced Portfolio Management*
-- Grinold & Kahn — *Active Portfolio Management*
+- Corsi (2009) — "A Simple Approximate Long-Memory Model of Realized Volatility", *Journal of Financial Econometrics*
+- Paleologo (2021) — *Advanced Portfolio Management*
+- Grinold & Kahn (2000) — *Active Portfolio Management*
