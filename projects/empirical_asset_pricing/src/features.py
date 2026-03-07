@@ -245,3 +245,30 @@ def build_features(
     result = result.dropna(how="all")
 
     return result
+
+
+# ---------------------------------------------------------------------------
+# 7. FEATURE INTERACTIONS
+# ---------------------------------------------------------------------------
+# The Kelly paper's key innovation: ML models capture interactions between
+# features that linear models miss. For example, "momentum works for large
+# caps but reverses for micro caps" is a momentum x size interaction.
+# The paper uses all pairwise interactions of 94 features (~4,400 terms).
+# We do the same with our 7 base features = 21 interaction terms.
+
+def build_interactions(features_df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Add pairwise interaction terms (products) between all features.
+
+    This is a simple way to give linear models access to the nonlinear
+    signal that tree models capture automatically. The Kelly paper finds
+    that interactions substantially improve elastic net performance.
+    """
+    cols = features_df.columns.tolist()
+    interactions = {}
+    for i, c1 in enumerate(cols):
+        for c2 in cols[i + 1:]:
+            interactions[f"{c1}_x_{c2}"] = features_df[c1] * features_df[c2]
+
+    interaction_df = pd.DataFrame(interactions, index=features_df.index)
+    return pd.concat([features_df, interaction_df], axis=1)

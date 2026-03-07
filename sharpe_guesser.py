@@ -57,7 +57,7 @@ def compute_sharpe(daily_returns: pd.Series, annual_rf: float = 0.05) -> float:
     excess = daily_returns - daily_rf
     ann_ret = excess.mean() * TRADING_DAYS
     ann_vol = excess.std() * np.sqrt(TRADING_DAYS)
-    if ann_vol == 0:
+    if ann_vol < 1e-10:
         return 0.0
     return ann_ret / ann_vol
 

@@ -194,3 +194,76 @@ def quantile_returns(
     summary["annual_vol"] = summary["std_return"] * np.sqrt(12)
 
     return summary
+
+
+# ---------------------------------------------------------------------------
+# 5. TURNOVER ANALYSIS
+# ---------------------------------------------------------------------------
+# Turnover measures how much the portfolio changes each month. High turnover
+# means high transaction costs, which can erase a strategy's alpha. A hiring
+# manager will ask about this — if your Sharpe is 0.5 but turnover is 90%,
+# the after-cost Sharpe might be negative.
+
+def compute_turnover(
+    rankings: pd.Series,
+    long_quantile: int | None = None,
+    short_quantile: int = 1,
+) -> pd.Series:
+    """
+    Compute monthly portfolio turnover — fraction of positions that change.
+
+    Returns a Series indexed by date with values between 0 (no change) and 1
+    (complete replacement). Values around 0.2-0.3 are typical for monthly
+    rebalancing; above 0.5 is expensive.
+    """
+    if long_quantile is None:
+        long_quantile = int(rankings.max())
+
+    dates = sorted(rankings.index.get_level_values(0).unique())
+    turnover_values = []
+    turnover_dates = []
+    prev_long = set()
+    prev_short = set()
+
+    for date in dates:
+        date_data = rankings.loc[date]
+        curr_long = set(date_data[date_data == long_quantile].index)
+        curr_short = set(date_data[date_data == short_quantile].index)
+
+        if prev_long or prev_short:
+            long_overlap = len(curr_long & prev_long)
+            short_overlap = len(curr_short & prev_short)
+            max_long = max(len(curr_long), len(prev_long), 1)
+            max_short = max(len(curr_short), len(prev_short), 1)
+
+            long_turnover = 1 - long_overlap / max_long
+            short_turnover = 1 - short_overlap / max_short
+            turnover_values.append((long_turnover + short_turnover) / 2)
+            turnover_dates.append(date)
+
+        prev_long = curr_long
+        prev_short = curr_short
+
+    return pd.Series(turnover_values, index=turnover_dates, name="turnover")
+
+
+def net_of_cost_returns(
+    strategy_returns: pd.Series,
+    turnover: pd.Series,
+    cost_bps: float = 10,
+) -> pd.Series:
+    """
+    Adjust strategy returns for estimated transaction costs.
+
+    Parameters:
+        strategy_returns: Monthly L/S returns
+        turnover:         Monthly turnover fraction (0-1)
+        cost_bps:         One-way trading cost in basis points (default 10 bps)
+
+    For S&P 500 large caps, 5-10 bps one-way is realistic. We apply costs
+    to both legs (long and short), so total cost = turnover * cost * 2.
+    """
+    cost = cost_bps / 10_000
+    common = strategy_returns.index.intersection(turnover.index)
+    costs = turnover.loc[common] * cost * 2  # Both legs
+    return strategy_returns.loc[common] - costs

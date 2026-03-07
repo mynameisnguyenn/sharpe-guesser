@@ -16,6 +16,8 @@ from typing import Any
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+from scipy import stats
+import statsmodels.api as sm
 
 from .portfolio import compute_performance
 
@@ -240,3 +242,145 @@ def plot_decile_returns(
         plt.savefig(save_path, dpi=150, bbox_inches="tight")
         print(f"Saved: {save_path}")
     plt.close(fig)
+
+
+# ---------------------------------------------------------------------------
+# 6. OUT-OF-SAMPLE R-SQUARED
+# ---------------------------------------------------------------------------
+# The paper's headline statistical metric. For monthly stock returns, even
+# 0.5% OOS R-squared is considered very good. The signal is tiny at the
+# individual stock level, but economically meaningful because you're
+# predicting the cross-section of 500 stocks simultaneously.
+
+def oos_r_squared(predictions_df: pd.DataFrame) -> float:
+    """
+    Compute out-of-sample R-squared from a predictions DataFrame.
+
+    OOS R² = 1 - sum((actual - predicted)²) / sum((actual - mean(actual))²)
+
+    The denominator uses the historical mean of actual returns (the "naive
+    forecast"). If R² > 0, the model beats the naive forecast.
+    """
+    actual = predictions_df["actual"]
+    predicted = predictions_df["prediction"]
+    ss_res = ((actual - predicted) ** 2).sum()
+    ss_tot = ((actual - actual.mean()) ** 2).sum()
+    if ss_tot < 1e-10:
+        return 0.0
+    return 1 - ss_res / ss_tot
+
+
+# ---------------------------------------------------------------------------
+# 7. FAMA-FRENCH ALPHA REGRESSION
+# ---------------------------------------------------------------------------
+# Regressing L/S returns on the 3 Fama-French factors answers: "Is this
+# strategy just repackaging known risk premia (market, size, value), or
+# does it capture genuine alpha?" A positive, significant intercept = alpha.
+
+def fama_french_alpha(
+    strategy_returns: pd.Series,
+    ff_factors: pd.DataFrame,
+    name: str = "Strategy",
+) -> dict:
+    """
+    Regress L/S returns on Fama-French 3 factors. Report alpha and loadings.
+
+    The L/S portfolio is already a spread (long minus short), so it's
+    approximately dollar-neutral. We regress on Mkt-RF, SMB, HML to see
+    how much of the return is explained by standard factors.
+    """
+    # Align on month — normalize both to month-end
+    strat = strategy_returns.copy()
+    strat.index = strat.index.to_period("M")
+    ff = ff_factors[["Mkt-RF", "SMB", "HML"]].copy()
+    ff.index = ff.index.to_period("M")
+
+    common = strat.index.intersection(ff.index)
+    if len(common) < 12:
+        print(f"  Warning: only {len(common)} overlapping months for {name}")
+        return {}
+
+    y = strat.loc[common].values
+    X = ff.loc[common].values
+    X = sm.add_constant(X)
+
+    result = sm.OLS(y, X).fit()
+
+    alpha_monthly = result.params[0]
+
+    print(f"\n  {name} — Fama-French 3-Factor Regression:")
+    print(f"    Alpha (monthly):  {alpha_monthly:.4f} (t={result.tvalues[0]:.2f}, p={result.pvalues[0]:.3f})")
+    print(f"    Alpha (annual):   {alpha_monthly * 12:.4f}")
+    print(f"    Mkt-RF beta:      {result.params[1]:.3f} (t={result.tvalues[1]:.2f})")
+    print(f"    SMB beta:         {result.params[2]:.3f} (t={result.tvalues[2]:.2f})")
+    print(f"    HML beta:         {result.params[3]:.3f} (t={result.tvalues[3]:.2f})")
+    print(f"    R²:               {result.rsquared:.3f}")
+
+    return {
+        "alpha_monthly": alpha_monthly,
+        "alpha_annual": alpha_monthly * 12,
+        "alpha_tstat": result.tvalues[0],
+        "alpha_pvalue": result.pvalues[0],
+        "mkt_beta": result.params[1],
+        "smb_beta": result.params[2],
+        "hml_beta": result.params[3],
+        "r_squared": result.rsquared,
+    }
+
+
+# ---------------------------------------------------------------------------
+# 8. STATISTICAL SIGNIFICANCE OF SPREAD
+# ---------------------------------------------------------------------------
+# A t-test on the monthly L/S spread answers: "Is the average spread
+# statistically different from zero, or could it be random noise?"
+
+def spread_significance(
+    strategy_returns: pd.Series,
+    name: str = "Strategy",
+) -> dict:
+    """Test if the L/S spread is statistically different from zero (t-test)."""
+    clean = strategy_returns.dropna()
+    t_stat, p_value = stats.ttest_1samp(clean, 0)
+    n = len(clean)
+    mean = clean.mean()
+
+    print(f"\n  {name} — Spread Significance:")
+    print(f"    Mean monthly spread: {mean:.4f} ({mean * 12:.4f} annualized)")
+    print(f"    t-statistic:         {t_stat:.2f}")
+    print(f"    p-value:             {p_value:.3f}")
+    print(f"    Significant at 5%:   {'Yes' if p_value < 0.05 else 'No'}")
+    print(f"    N months:            {n}")
+
+    return {
+        "mean_monthly": mean,
+        "t_stat": t_stat,
+        "p_value": p_value,
+        "significant_5pct": p_value < 0.05,
+        "significant_10pct": p_value < 0.10,
+        "n_months": n,
+    }
+
+
+# ---------------------------------------------------------------------------
+# 9. TURNOVER AND COST ANALYSIS
+# ---------------------------------------------------------------------------
+
+def turnover_cost_summary(
+    strategy_returns: pd.Series,
+    turnover: pd.Series,
+    net_returns: pd.Series,
+    name: str = "Strategy",
+    cost_bps: float = 10,
+) -> None:
+    """Print a summary of turnover and transaction cost impact."""
+    gross_perf = compute_performance(strategy_returns)
+    net_perf = compute_performance(net_returns)
+
+    print(f"\n  {name} — Turnover & Cost Analysis (cost = {cost_bps} bps one-way):")
+    print(f"    Average monthly turnover:  {turnover.mean():.1%}")
+    print(f"    Median monthly turnover:   {turnover.median():.1%}")
+    print(f"    Gross Sharpe:              {gross_perf['sharpe']:.3f}")
+    print(f"    Net Sharpe:                {net_perf['sharpe']:.3f}")
+    print(f"    Gross annual return:       {gross_perf['annual_return']:.2%}")
+    print(f"    Net annual return:         {net_perf['annual_return']:.2%}")
+    print(f"    Annual cost drag:          {(gross_perf['annual_return'] - net_perf['annual_return']):.2%}")

@@ -34,3 +34,4 @@ projects/*/data/*.pkl
 projects/*/data/*.parquet
 projects/*/results/*.png
 projects/*/results/*.csv
+.claude/

@@ -298,7 +298,7 @@ def information_ratio(model_result: dict) -> float:
     """
     alpha_annual = model_result["alpha_annual"]
     tracking_error = model_result["model"].resid.std() * np.sqrt(TRADING_DAYS)
-    if tracking_error == 0:
+    if tracking_error < 1e-10:
         return 0.0
     return alpha_annual / tracking_error
 

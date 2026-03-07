@@ -97,7 +97,7 @@ class SimpleBacktester:
 
         ann_ret = rets.mean() * TRADING_DAYS
         ann_vol = rets.std() * np.sqrt(TRADING_DAYS)
-        sharpe = ann_ret / ann_vol if ann_vol > 0 else 0
+        sharpe = ann_ret / ann_vol if ann_vol > 1e-10 else 0
 
         # Drawdown
         peak = cum.cummax()
@@ -106,10 +106,10 @@ class SimpleBacktester:
 
         # Sortino
         downside = rets[rets < 0].std() * np.sqrt(TRADING_DAYS)
-        sortino = ann_ret / downside if downside > 0 else 0
+        sortino = ann_ret / downside if downside > 1e-10 else 0
 
         # Calmar
-        calmar = ann_ret / abs(max_dd) if max_dd != 0 else 0
+        calmar = ann_ret / abs(max_dd) if abs(max_dd) > 1e-10 else 0
 
         # Win rate
         win_rate = (rets > 0).mean()

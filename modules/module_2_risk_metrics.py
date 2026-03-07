@@ -259,7 +259,7 @@ def sortino_ratio(daily_returns: pd.Series, annual_rf: float = 0.05) -> float:
     excess = daily_returns - daily_rf
     ann_excess = excess.mean() * TRADING_DAYS
     dd = downside_deviation(daily_returns, annual_rf)
-    if dd == 0 or np.isnan(dd):
+    if dd < 1e-10 or np.isnan(dd):
         return 0.0
     return ann_excess / dd
 
@@ -284,7 +284,7 @@ def calmar_ratio(prices: pd.Series, annual_rf: float = 0.05) -> float:
     daily_rf = annual_rf / TRADING_DAYS
     ann_excess = (returns.mean() - daily_rf) * TRADING_DAYS
     mdd = abs(max_drawdown(prices))
-    if mdd == 0:
+    if mdd < 1e-10:
         return 0.0
     return ann_excess / mdd
 

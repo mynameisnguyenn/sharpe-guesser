@@ -169,7 +169,76 @@ def load_cached(filename: str) -> Optional[pd.DataFrame]:
 
 
 # ---------------------------------------------------------------------------
-# 5. BUILD THE DATASET — ORCHESTRATE EVERYTHING
+# 5. FAMA-FRENCH FACTORS
+# ---------------------------------------------------------------------------
+# The Fama-French 3-factor model (MKT, SMB, HML) is the standard benchmark
+# in academic asset pricing. To show that our ML strategy captures genuine
+# alpha, we need to regress our returns on these factors and show that the
+# intercept (alpha) is positive and statistically significant.
+
+def fetch_fama_french_factors(
+    start: str = "2010-01-01",
+    end: str = "2024-12-31",
+    cache: bool = True,
+) -> pd.DataFrame:
+    """
+    Fetch monthly Fama-French 3-factor data from Ken French's data library.
+
+    Returns DataFrame with columns: Mkt-RF, SMB, HML, RF (decimal returns).
+    """
+    cache_file = "ff_factors.parquet"
+    if cache:
+        cached = load_cached(cache_file)
+        if cached is not None:
+            return cached
+
+    import io
+    import re
+    import zipfile
+    import urllib.request
+
+    url = (
+        "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/"
+        "ftp/F-F_Research_Data_Factors_CSV.zip"
+    )
+    print("Downloading Fama-French 3-factor data...")
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req) as resp:
+        zip_data = resp.read()
+
+    with zipfile.ZipFile(io.BytesIO(zip_data)) as z:
+        csv_name = z.namelist()[0]
+        with z.open(csv_name) as f:
+            raw = f.read().decode("utf-8")
+
+    # Extract monthly data rows — format: YYYYMM, num, num, num, num
+    lines = raw.split("\n")
+    data_rows = []
+    for line in lines:
+        line = line.strip()
+        # Monthly rows start with exactly 6 digits (YYYYMM)
+        if re.match(r"^\d{6}\s*,", line):
+            parts = [p.strip() for p in line.split(",")]
+            if len(parts) >= 5:
+                data_rows.append(parts[:5])
+
+    df = pd.DataFrame(data_rows, columns=["date", "Mkt-RF", "SMB", "HML", "RF"])
+    df["date"] = pd.to_datetime(df["date"], format="%Y%m") + pd.offsets.MonthEnd(0)
+    for col in ["Mkt-RF", "SMB", "HML", "RF"]:
+        df[col] = pd.to_numeric(df[col]) / 100  # Percent to decimal
+
+    df = df.set_index("date")
+    df = df.loc[start:end]
+
+    if cache:
+        cache_data(df, cache_file)
+
+    print(f"Fama-French factors: {len(df)} months")
+    return df
+
+
+# ---------------------------------------------------------------------------
+# 6. BUILD THE DATASET — ORCHESTRATE EVERYTHING
 # ---------------------------------------------------------------------------
 
 def build_dataset(

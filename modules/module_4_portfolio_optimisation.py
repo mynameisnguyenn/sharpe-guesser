@@ -67,7 +67,7 @@ def portfolio_sharpe(
     """Annualised Sharpe ratio of a portfolio."""
     ret = portfolio_return(weights, mu)
     vol = portfolio_volatility(weights, cov)
-    if vol == 0:
+    if vol < 1e-10:
         return 0.0
     return (ret - rf) / vol
 

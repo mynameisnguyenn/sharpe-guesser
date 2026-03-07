@@ -23,7 +23,7 @@ from typing import Callable
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import ElasticNetCV
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import GradientBoostingRegressor, RandomForestRegressor
 from sklearn.preprocessing import StandardScaler
 
 
@@ -44,7 +44,7 @@ from sklearn.preprocessing import StandardScaler
 def train_elastic_net(
     X: pd.DataFrame,
     y: pd.Series,
-    cv: int = 5,
+    cv: int = 3,
 ) -> ElasticNetCV:
     """
     Train an elastic net model with cross-validated regularization.
@@ -57,9 +57,10 @@ def train_elastic_net(
     X_scaled = scaler.fit_transform(X)
 
     model = ElasticNetCV(
-        l1_ratio=[0.1, 0.5, 0.7, 0.9, 0.95, 1.0],
+        l1_ratio=[0.5, 0.9, 1.0],
         cv=cv,
-        max_iter=10000,
+        alphas=20,
+        max_iter=5000,
         n_jobs=-1,
     )
     model.fit(X_scaled, y)
@@ -109,6 +110,43 @@ def train_random_forest(
         min_samples_leaf=20,  # Require decent sample in each leaf
         max_features="sqrt",  # Random feature subset at each split
         n_jobs=-1,
+        random_state=42,
+    )
+    model.fit(X, y)
+    return model
+
+
+# ---------------------------------------------------------------------------
+# 2b. GRADIENT BOOSTED TREES
+# ---------------------------------------------------------------------------
+# The Kelly paper finds that boosted trees perform nearly as well as neural
+# networks and significantly better than random forests. Boosting builds
+# trees sequentially — each tree corrects the errors of the previous one.
+# This is different from random forests, where trees are built independently.
+#
+# If a random forest is like polling 100 independent analysts, gradient
+# boosting is like one analyst who reviews their mistakes after each call
+# and adjusts. Boosting tends to be better at finding subtle signals.
+
+def train_gradient_boosting(
+    X: pd.DataFrame,
+    y: pd.Series,
+    n_estimators: int = 100,
+) -> GradientBoostingRegressor:
+    """
+    Train a gradient boosted regression tree.
+
+    Uses sklearn's GradientBoostingRegressor with conservative hyperparameters
+    to avoid overfitting. A low learning rate with more trees is generally
+    better than a high learning rate with fewer trees.
+    """
+    model = GradientBoostingRegressor(
+        n_estimators=n_estimators,
+        max_depth=4,            # Shallow trees — boosting works best with weak learners
+        learning_rate=0.05,     # Low LR + more trees = better generalization
+        min_samples_leaf=20,
+        subsample=0.8,          # Stochastic gradient boosting — reduces variance
+        max_features="sqrt",
         random_state=42,
     )
     model.fit(X, y)

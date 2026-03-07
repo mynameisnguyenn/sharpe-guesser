@@ -18,6 +18,7 @@ from src.features import (
     volume_trend,
     max_return,
     build_features,
+    build_interactions,
 )
 
 
@@ -237,3 +238,116 @@ class TestBuildFeatures:
     def test_output_not_empty(self, prices, volumes):
         result = build_features(prices, volumes)
         assert len(result) > 0
+
+
+# ---------------------------------------------------------------------------
+# Feature interactions test
+# ---------------------------------------------------------------------------
+
+class TestBuildInteractions:
+    def test_adds_interaction_columns(self, prices, volumes):
+        features = build_features(prices, volumes)
+        result = build_interactions(features)
+        n_base = len(features.columns)
+        n_interactions = n_base * (n_base - 1) // 2
+        assert len(result.columns) == n_base + n_interactions
+
+    def test_interaction_names(self, prices, volumes):
+        features = build_features(prices, volumes)
+        result = build_interactions(features)
+        assert "mom_1m_x_mom_6m" in result.columns
+        assert "realized_vol_x_log_dollar_vol" in result.columns
+
+    def test_interaction_values(self):
+        """Interaction term should be the product of two features."""
+        idx = pd.MultiIndex.from_tuples(
+            [("2023-01-01", "A"), ("2023-01-01", "B")],
+            names=["date", "ticker"],
+        )
+        df = pd.DataFrame({"x": [2.0, 3.0], "y": [4.0, 5.0]}, index=idx)
+        result = build_interactions(df)
+        assert result.loc[("2023-01-01", "A"), "x_x_y"] == 8.0
+        assert result.loc[("2023-01-01", "B"), "x_x_y"] == 15.0
+
+    def test_preserves_base_features(self, prices, volumes):
+        features = build_features(prices, volumes)
+        result = build_interactions(features)
+        for col in features.columns:
+            pd.testing.assert_series_equal(result[col], features[col])
+
+    def test_same_index(self, prices, volumes):
+        features = build_features(prices, volumes)
+        result = build_interactions(features)
+        pd.testing.assert_index_equal(result.index, features.index)
+
+
+# ---------------------------------------------------------------------------
+# Portfolio and evaluation tests (with synthetic data)
+# ---------------------------------------------------------------------------
+
+class TestPortfolioFunctions:
+    @pytest.fixture
+    def synthetic_predictions(self):
+        """Synthetic predictions for 10 stocks over 5 months."""
+        np.random.seed(42)
+        dates = pd.date_range("2023-01-31", periods=5, freq="ME")
+        tickers = [f"S{i}" for i in range(10)]
+        idx = pd.MultiIndex.from_product([dates, tickers], names=["date", "ticker"])
+        return pd.DataFrame({
+            "prediction": np.random.normal(0.01, 0.05, len(idx)),
+            "actual": np.random.normal(0.01, 0.05, len(idx)),
+        }, index=idx)
+
+    def test_rank_stocks(self, synthetic_predictions):
+        from src.portfolio import rank_stocks
+        rankings = rank_stocks(synthetic_predictions["prediction"], n_quantiles=5)
+        assert len(rankings) == len(synthetic_predictions)
+        assert rankings.min() >= 1
+
+    def test_long_short_returns(self, synthetic_predictions):
+        from src.portfolio import rank_stocks, long_short_returns
+        rankings = rank_stocks(synthetic_predictions["prediction"], n_quantiles=5)
+        ls = long_short_returns(synthetic_predictions["actual"], rankings)
+        assert len(ls) > 0
+
+    def test_compute_turnover(self, synthetic_predictions):
+        from src.portfolio import rank_stocks, compute_turnover
+        rankings = rank_stocks(synthetic_predictions["prediction"], n_quantiles=5)
+        to = compute_turnover(rankings)
+        assert len(to) > 0
+        assert (to >= 0).all()
+        assert (to <= 1).all()
+
+    def test_net_of_cost_returns(self, synthetic_predictions):
+        from src.portfolio import (
+            rank_stocks, long_short_returns, compute_turnover, net_of_cost_returns,
+        )
+        rankings = rank_stocks(synthetic_predictions["prediction"], n_quantiles=5)
+        ls = long_short_returns(synthetic_predictions["actual"], rankings)
+        to = compute_turnover(rankings)
+        net = net_of_cost_returns(ls, to, cost_bps=10)
+        # Net returns should be less than or equal to gross returns
+        common = ls.index.intersection(net.index)
+        assert (net.loc[common] <= ls.loc[common] + 1e-10).all()
+
+
+class TestEvaluationFunctions:
+    def test_oos_r_squared_perfect(self):
+        from src.evaluate import oos_r_squared
+        df = pd.DataFrame({"actual": [1, 2, 3, 4], "prediction": [1, 2, 3, 4]})
+        assert abs(oos_r_squared(df) - 1.0) < 1e-10
+
+    def test_oos_r_squared_mean_forecast(self):
+        from src.evaluate import oos_r_squared
+        actual = [1, 2, 3, 4]
+        mean_pred = [np.mean(actual)] * 4
+        df = pd.DataFrame({"actual": actual, "prediction": mean_pred})
+        assert abs(oos_r_squared(df)) < 1e-10
+
+    def test_spread_significance(self, capsys):
+        from src.evaluate import spread_significance
+        returns = pd.Series([0.01, 0.02, -0.005, 0.015, 0.01] * 20)
+        result = spread_significance(returns, name="Test")
+        assert "t_stat" in result
+        assert "p_value" in result
+        assert result["n_months"] == 100
