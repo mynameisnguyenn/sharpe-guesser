@@ -44,6 +44,10 @@ python factor_dashboard.py AAPL MSFT JPM
 python -m modules.module_1_statistics
 python -m modules.module_2_risk_metrics
 
+# Quiz (two interfaces)
+/quiz                           # Claude Code slash command (phone/commute)
+streamlit run quiz/app.py       # Streamlit dashboard (laptop)
+
 # Tests
 python -m pytest tests/ -v
 

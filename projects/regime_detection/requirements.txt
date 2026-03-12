@@ -1,0 +1,11 @@
+pandas>=2.0
+numpy>=1.24
+yfinance>=0.2.18
+matplotlib>=3.7
+seaborn>=0.12
+hmmlearn>=0.3.0
+statsmodels>=0.14
+scipy>=1.10
+pyarrow>=12.0
+streamlit>=1.28
+plotly>=5.15

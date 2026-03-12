@@ -36,6 +36,9 @@ projects/*/data/*.parquet
 projects/*/results/*.csv
 .claude/
 
+# Quiz progress (user-specific, not shared)
+quiz/progress.json
+
 # Books (copyrighted material — don't push)
 books/*.pdf
 *.pdf

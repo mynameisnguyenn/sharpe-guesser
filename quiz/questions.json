@@ -1,0 +1,4097 @@
+{
+  "questions": [
+    {
+      "id": "statistics_001",
+      "topic": "statistics",
+      "subtopic": "annualization",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_1",
+      "question": "To annualize daily volatility, you multiply by:",
+      "choices": [
+        "A) 252",
+        "B) sqrt(252)",
+        "C) 12",
+        "D) sqrt(12)"
+      ],
+      "correct": 1,
+      "explanation": "Volatility scales with the square root of time, so daily vol * sqrt(252) = annual vol.  Returns scale linearly, but vol does not.",
+      "tags": [
+        "annualization",
+        "volatility"
+      ]
+    },
+    {
+      "id": "statistics_002",
+      "topic": "statistics",
+      "subtopic": "skewness",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_1",
+      "question": "Equity return distributions typically exhibit:",
+      "choices": [
+        "A) Positive skew and thin tails",
+        "B) Negative skew and fat tails",
+        "C) Zero skew and normal tails",
+        "D) Positive skew and fat tails"
+      ],
+      "correct": 1,
+      "explanation": "Equities have negative skew (big down days larger than big up days) and excess kurtosis (fat tails — extreme events more frequent than a normal distribution predicts).",
+      "tags": [
+        "skewness",
+        "kurtosis",
+        "distributions"
+      ]
+    },
+    {
+      "id": "statistics_003",
+      "topic": "statistics",
+      "subtopic": "kurtosis",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_1",
+      "question": "Excess kurtosis of 5 means:",
+      "choices": [
+        "A) Returns are thinner-tailed than normal",
+        "B) Returns are perfectly normal",
+        "C) Extreme events occur more often than a normal distribution predicts",
+        "D) The mean return is five standard deviations away"
+      ],
+      "correct": 2,
+      "explanation": "A normal distribution has excess kurtosis of 0. Positive excess kurtosis means fatter tails — extreme moves happen more often than the bell curve suggests.",
+      "tags": [
+        "kurtosis",
+        "fat_tails"
+      ]
+    },
+    {
+      "id": "statistics_004",
+      "topic": "statistics",
+      "subtopic": "correlation",
+      "difficulty": 1,
+      "type": "true_false",
+      "source": "module_1",
+      "question": "A correlation of 0.9 between two stocks means one causes the other to move.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "Correlation measures co-movement, not causation. Two stocks might be correlated because they share a common factor (e.g., same sector), not because one drives the other.",
+      "tags": [
+        "correlation",
+        "causation"
+      ]
+    },
+    {
+      "id": "statistics_005",
+      "topic": "statistics",
+      "subtopic": "descriptive",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_1",
+      "question": "Which statistic is most affected by a single extreme outlier?",
+      "choices": [
+        "A) Median",
+        "B) Mean",
+        "C) Mode",
+        "D) Interquartile range"
+      ],
+      "correct": 1,
+      "explanation": "The mean is pulled toward outliers. The median, mode, and IQR are robust to extreme values — which is why risk reports often show both mean and median.",
+      "tags": [
+        "mean",
+        "median",
+        "outliers"
+      ]
+    },
+    {
+      "id": "statistics_006",
+      "topic": "statistics",
+      "subtopic": "annualization",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "module_1",
+      "question": "Annualizing daily returns uses sqrt(252), just like volatility.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "Returns annualize linearly: daily_return * 252. Volatility annualizes with sqrt(252). This is because variance scales linearly with time (assuming independence), and vol is the square root of variance.",
+      "tags": [
+        "annualization",
+        "returns",
+        "volatility"
+      ]
+    },
+    {
+      "id": "statistics_007",
+      "topic": "statistics",
+      "subtopic": "covariance",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_1",
+      "question": "A 5-stock portfolio's covariance matrix has how many unique entries (including diagonal)?",
+      "choices": [
+        "A) 5",
+        "B) 10",
+        "C) 15",
+        "D) 25"
+      ],
+      "correct": 2,
+      "explanation": "A symmetric n×n matrix has n*(n+1)/2 unique entries. For n=5: 5*6/2 = 15. The diagonal has 5 variances and there are 10 unique covariances.",
+      "tags": [
+        "covariance",
+        "matrix"
+      ]
+    },
+    {
+      "id": "statistics_008",
+      "topic": "statistics",
+      "subtopic": "stationarity",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "module_1",
+      "question": "Financial return series are typically stationary, while price series are not.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 1,
+      "explanation": "Prices are non-stationary (trending, unit root). Returns (percent changes) are approximately stationary — their statistical properties are roughly constant over time. This is why we model returns, not prices.",
+      "tags": [
+        "stationarity",
+        "returns",
+        "prices"
+      ]
+    },
+    {
+      "id": "statistics_009",
+      "topic": "statistics",
+      "subtopic": "win_rate",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_1",
+      "question": "A strategy has 40% win rate but a 2:1 average win/loss ratio. Its expected return per trade is:",
+      "choices": [
+        "A) Negative",
+        "B) Zero",
+        "C) Positive",
+        "D) Cannot determine"
+      ],
+      "correct": 2,
+      "explanation": "E[return] = 0.4 * W - 0.6 * L. If W = 2L, then E = 0.4*2L - 0.6*L = 0.2L > 0. Win rate alone doesn't determine profitability — the magnitude of wins vs losses matters more.",
+      "tags": [
+        "win_rate",
+        "expected_value"
+      ]
+    },
+    {
+      "id": "statistics_010",
+      "topic": "statistics",
+      "subtopic": "distributions",
+      "difficulty": 2,
+      "type": "explain",
+      "source": "module_1",
+      "question": "Your risk report assumes returns are normally distributed. Why is this dangerous, and what should you watch for?",
+      "choices": null,
+      "correct": null,
+      "explanation": "Normal distributions understate tail risk. Real equity returns have fat tails (excess kurtosis) and negative skew. A '5-sigma' event under normality should happen once every 14,000 years, but in markets it happens every few years. Watch for: VaR breaches exceeding model predictions, and stress scenarios that models call 'impossible'.",
+      "rubric": "Should mention: fat tails, negative skew, VaR understatement, real-world tail events being more frequent than models predict.",
+      "tags": [
+        "distributions",
+        "tail_risk",
+        "normality"
+      ]
+    },
+    {
+      "id": "statistics_011",
+      "topic": "statistics",
+      "subtopic": "correlation",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_1",
+      "question": "During a market crash, stock correlations typically:",
+      "choices": [
+        "A) Decrease toward zero",
+        "B) Stay the same",
+        "C) Increase toward 1",
+        "D) Become negative"
+      ],
+      "correct": 2,
+      "explanation": "Correlations spike during crises — 'the only thing that goes up in a crash is correlation.' This is why diversification benefits disappear exactly when you need them most.",
+      "tags": [
+        "correlation",
+        "crisis",
+        "diversification"
+      ]
+    },
+    {
+      "id": "statistics_012",
+      "topic": "statistics",
+      "subtopic": "volatility",
+      "difficulty": 1,
+      "type": "true_false",
+      "source": "module_1",
+      "question": "A stock with 20% annual volatility is expected to move about 1.26% per day on average.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 1,
+      "explanation": "Daily vol ≈ 20% / sqrt(252) ≈ 1.26%. Average absolute daily move ≈ 0.8 * daily vol ≈ 1.0% for a normal distribution.",
+      "tags": [
+        "volatility",
+        "daily_moves"
+      ]
+    },
+    {
+      "id": "statistics_013",
+      "topic": "statistics",
+      "subtopic": "log_returns",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_1",
+      "question": "Log returns are preferred over simple returns for multi-period analysis because:",
+      "choices": [
+        "A) They are always larger",
+        "B) They are additive across time",
+        "C) They never go negative",
+        "D) They ignore compounding"
+      ],
+      "correct": 1,
+      "explanation": "Log returns are time-additive: the log return over 5 days equals the sum of 5 daily log returns. Simple returns compound multiplicatively, making aggregation harder.",
+      "tags": [
+        "log_returns",
+        "simple_returns",
+        "compounding"
+      ]
+    },
+    {
+      "id": "statistics_014",
+      "topic": "statistics",
+      "subtopic": "mean_estimation",
+      "difficulty": 3,
+      "type": "true_false",
+      "source": "module_1",
+      "question": "Collecting more frequent data (daily instead of monthly) improves your estimate of expected returns.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "Signal-to-noise ratio for mean estimation = alpha/sigma, independent of frequency. More data points help estimate volatility better, but expected return precision depends on the length of history, not the sampling frequency.",
+      "tags": [
+        "mean_estimation",
+        "frequency",
+        "signal_to_noise"
+      ]
+    },
+    {
+      "id": "statistics_015",
+      "topic": "statistics",
+      "subtopic": "vol_of_vol",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_1",
+      "question": "If daily vol is 1% and you observe a -4% daily move, this is roughly a:",
+      "choices": [
+        "A) 1-sigma event",
+        "B) 2-sigma event",
+        "C) 4-sigma event",
+        "D) 16-sigma event"
+      ],
+      "correct": 2,
+      "explanation": "-4% / 1% = 4 standard deviations. Under normality this has ~0.006% probability, but with fat tails it occurs far more often — highlighting model risk.",
+      "tags": [
+        "sigma_events",
+        "tail_risk"
+      ]
+    },
+    {
+      "id": "statistics_016",
+      "topic": "statistics",
+      "subtopic": "correlation_matrix",
+      "difficulty": 3,
+      "type": "explain",
+      "source": "module_1",
+      "question": "You have a 50-stock portfolio. Explain why you can't just estimate the full covariance matrix from daily returns and what factor models solve.",
+      "choices": null,
+      "correct": null,
+      "explanation": "A 50-stock covariance matrix has 1,275 unique entries but daily data provides limited observations. With 252 trading days, you're estimating more parameters than data points — the matrix becomes noisy and may not even be positive semi-definite. Factor models reduce dimensionality: instead of estimating all pairwise covariances, you estimate ~50 factor loadings per stock and a much smaller factor covariance matrix.",
+      "rubric": "Should mention: dimensionality problem, n*(n+1)/2 parameters, limited data, factor model dimensionality reduction, positive semi-definiteness.",
+      "tags": [
+        "covariance",
+        "factor_models",
+        "dimensionality"
+      ]
+    },
+    {
+      "id": "statistics_017",
+      "topic": "statistics",
+      "subtopic": "percentiles",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_1",
+      "question": "The 5th percentile of a return distribution represents:",
+      "choices": [
+        "A) The average return",
+        "B) The return exceeded 95% of the time",
+        "C) The best 5% of returns",
+        "D) Five percent of the portfolio value"
+      ],
+      "correct": 1,
+      "explanation": "The 5th percentile is the value below which 5% of observations fall — equivalently, 95% of returns are above this level. This is directly related to 95% VaR.",
+      "tags": [
+        "percentiles",
+        "var"
+      ]
+    },
+    {
+      "id": "statistics_018",
+      "topic": "statistics",
+      "subtopic": "variance_additivity",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "module_1",
+      "question": "Variances of uncorrelated components add, but volatilities do not.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 1,
+      "explanation": "If A and B are uncorrelated: Var(A+B) = Var(A) + Var(B), but Vol(A+B) = sqrt(Var(A) + Var(B)) ≠ Vol(A) + Vol(B). This is why risk decomposition uses variance, not volatility.",
+      "tags": [
+        "variance",
+        "volatility",
+        "additivity"
+      ]
+    },
+    {
+      "id": "risk_metrics_001",
+      "topic": "risk_metrics",
+      "subtopic": "var",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_2",
+      "question": "95% daily VaR of -2.1% means:",
+      "choices": [
+        "A) You will lose exactly 2.1% today",
+        "B) There is a 5% chance of losing more than 2.1% in a day",
+        "C) Your maximum possible loss is 2.1%",
+        "D) You lose 2.1% on 95% of days"
+      ],
+      "correct": 1,
+      "explanation": "VaR is a threshold, not a prediction. It says: on 95% of days, losses won't exceed 2.1%. On the worst 5% of days, losses will be worse than -2.1%.",
+      "tags": [
+        "var",
+        "confidence_level"
+      ]
+    },
+    {
+      "id": "risk_metrics_002",
+      "topic": "risk_metrics",
+      "subtopic": "cvar",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_2",
+      "question": "Your risk report shows 95% VaR of -2.1% and CVaR of -3.4%. Why does the risk committee care more about CVaR?",
+      "choices": [
+        "A) CVaR is always a smaller number",
+        "B) CVaR captures the average loss in the tail, not just the threshold",
+        "C) CVaR assumes normality",
+        "D) CVaR is easier to compute"
+      ],
+      "correct": 1,
+      "explanation": "CVaR (Expected Shortfall) averages the losses beyond the VaR threshold. VaR tells you the door to the tail; CVaR tells you how bad it gets once you're through it.",
+      "tags": [
+        "var",
+        "cvar",
+        "tail_risk"
+      ]
+    },
+    {
+      "id": "risk_metrics_003",
+      "topic": "risk_metrics",
+      "subtopic": "var_methods",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_2",
+      "question": "Parametric VaR tends to understate tail risk because:",
+      "choices": [
+        "A) It uses too much data",
+        "B) It assumes returns are normally distributed",
+        "C) It only looks at historical data",
+        "D) It is computationally expensive"
+      ],
+      "correct": 1,
+      "explanation": "Parametric VaR uses the normal distribution's quantile, but real returns have fatter tails. This means the true 5th percentile loss is worse than what a normal distribution predicts.",
+      "tags": [
+        "var",
+        "parametric",
+        "normality"
+      ]
+    },
+    {
+      "id": "risk_metrics_004",
+      "topic": "risk_metrics",
+      "subtopic": "var_methods",
+      "difficulty": 1,
+      "type": "true_false",
+      "source": "module_2",
+      "question": "Historical VaR can only capture risks that have actually occurred in the sample period.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 1,
+      "explanation": "Historical VaR uses actual past returns, so it cannot anticipate unprecedented events. If the sample period was calm, VaR will be too optimistic. This is its main limitation.",
+      "tags": [
+        "var",
+        "historical"
+      ]
+    },
+    {
+      "id": "risk_metrics_005",
+      "topic": "risk_metrics",
+      "subtopic": "drawdown",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_2",
+      "question": "Max drawdown measures:",
+      "choices": [
+        "A) The largest single-day loss",
+        "B) The peak-to-trough decline in portfolio value",
+        "C) The average daily loss",
+        "D) The standard deviation of losses"
+      ],
+      "correct": 1,
+      "explanation": "Max drawdown is the largest percentage drop from any peak to the subsequent trough. It captures the worst sustained loss, not just a single bad day.",
+      "tags": [
+        "drawdown",
+        "max_drawdown"
+      ]
+    },
+    {
+      "id": "risk_metrics_006",
+      "topic": "risk_metrics",
+      "subtopic": "sortino",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_2",
+      "question": "The Sortino ratio differs from the Sharpe ratio by:",
+      "choices": [
+        "A) Using median instead of mean",
+        "B) Penalizing only downside volatility, not upside",
+        "C) Ignoring the risk-free rate",
+        "D) Using monthly instead of daily data"
+      ],
+      "correct": 1,
+      "explanation": "Sortino uses downside deviation (vol of negative returns only) instead of total volatility. Upside volatility is good — you shouldn't be penalized for big up days.",
+      "tags": [
+        "sortino",
+        "sharpe",
+        "downside_deviation"
+      ]
+    },
+    {
+      "id": "risk_metrics_007",
+      "topic": "risk_metrics",
+      "subtopic": "calmar",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_2",
+      "question": "The Calmar ratio is defined as:",
+      "choices": [
+        "A) Return / volatility",
+        "B) Return / max drawdown",
+        "C) Return / VaR",
+        "D) Return / downside deviation"
+      ],
+      "correct": 1,
+      "explanation": "Calmar = annualized return / max drawdown. It measures how much return you earn per unit of worst-case sustained loss.",
+      "tags": [
+        "calmar",
+        "drawdown"
+      ]
+    },
+    {
+      "id": "risk_metrics_008",
+      "topic": "risk_metrics",
+      "subtopic": "cvar",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "module_2",
+      "question": "CVaR is always worse (more negative) than VaR at the same confidence level.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 1,
+      "explanation": "CVaR averages all losses beyond VaR, so it must be at least as bad. If VaR = -2.1%, the average loss on days worse than -2.1% (CVaR) will be more negative.",
+      "tags": [
+        "cvar",
+        "var"
+      ]
+    },
+    {
+      "id": "risk_metrics_009",
+      "topic": "risk_metrics",
+      "subtopic": "risk_decomposition",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch3",
+      "question": "A portfolio has 15% total vol. Factor vol is 5%. The idiosyncratic vol is approximately:",
+      "choices": [
+        "A) 10%",
+        "B) 14.1%",
+        "C) 20%",
+        "D) 200%"
+      ],
+      "correct": 1,
+      "explanation": "Var(total) = Var(factor) + Var(idio). 225 = 25 + Var(idio). Var(idio) = 200. Vol(idio) = sqrt(200) ≈ 14.1%. Variances add, not vols.",
+      "tags": [
+        "risk_decomposition",
+        "variance",
+        "volatility"
+      ]
+    },
+    {
+      "id": "risk_metrics_010",
+      "topic": "risk_metrics",
+      "subtopic": "var_comparison",
+      "difficulty": 2,
+      "type": "explain",
+      "source": "module_2",
+      "question": "Compare the three VaR methods (historical, parametric, Monte Carlo). When would you use each?",
+      "choices": null,
+      "correct": null,
+      "explanation": "Historical: simplest, no distribution assumptions, good for daily reporting but limited by sample history. Parametric: fast, closed-form, but assumes normality (understates tails). Monte Carlo: most flexible, can model any distribution (e.g., Student-t for fat tails), used for stress testing but computationally expensive.",
+      "rubric": "Should mention all three methods, their assumptions, and key trade-offs. Bonus: connecting each to a practical use case.",
+      "tags": [
+        "var",
+        "historical",
+        "parametric",
+        "monte_carlo"
+      ]
+    },
+    {
+      "id": "risk_metrics_011",
+      "topic": "risk_metrics",
+      "subtopic": "vol_scaling",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "paleologo_ch3",
+      "question": "If annual volatility is 20%, approximate monthly volatility is:",
+      "choices": [
+        "A) 20% / 12 ≈ 1.7%",
+        "B) 20% / sqrt(12) ≈ 5.8%",
+        "C) 20% * sqrt(12) ≈ 69%",
+        "D) 20% * 12 = 240%"
+      ],
+      "correct": 1,
+      "explanation": "Monthly vol = annual vol / sqrt(12). Volatility scales with the square root of time, not linearly.",
+      "tags": [
+        "volatility",
+        "scaling"
+      ]
+    },
+    {
+      "id": "risk_metrics_012",
+      "topic": "risk_metrics",
+      "subtopic": "drawdown",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "module_2",
+      "question": "A strategy can have a high Sharpe ratio but still experience a devastating max drawdown.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 1,
+      "explanation": "Sharpe measures risk-adjusted return using volatility, but drawdowns depend on path and can be extreme even with moderate vol. A Sharpe 1.5 strategy can still have a 30%+ drawdown during a tail event.",
+      "tags": [
+        "sharpe",
+        "drawdown"
+      ]
+    },
+    {
+      "id": "risk_metrics_013",
+      "topic": "risk_metrics",
+      "subtopic": "monte_carlo_var",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_2",
+      "question": "Monte Carlo VaR with a Student-t distribution is better than parametric VaR because:",
+      "choices": [
+        "A) It's faster to compute",
+        "B) It captures fat tails that the normal distribution misses",
+        "C) It requires less data",
+        "D) It always gives a lower VaR number"
+      ],
+      "correct": 1,
+      "explanation": "The Student-t distribution has heavier tails than the normal, so Monte Carlo VaR with fitted t-distribution gives more realistic tail risk estimates.",
+      "tags": [
+        "monte_carlo",
+        "student_t",
+        "fat_tails"
+      ]
+    },
+    {
+      "id": "risk_metrics_014",
+      "topic": "risk_metrics",
+      "subtopic": "sortino",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_2",
+      "question": "A strategy with Sharpe of 1.2 and Sortino of 2.0 most likely has:",
+      "choices": [
+        "A) Symmetric return distribution",
+        "B) More upside than downside volatility",
+        "C) More downside than upside volatility",
+        "D) No downside risk"
+      ],
+      "correct": 1,
+      "explanation": "Sortino > Sharpe means downside deviation < total vol, implying upside vol contributes more to total vol. The strategy has positive skew — bigger up moves than down moves.",
+      "tags": [
+        "sortino",
+        "sharpe",
+        "skewness"
+      ]
+    },
+    {
+      "id": "risk_metrics_015",
+      "topic": "risk_metrics",
+      "subtopic": "var",
+      "difficulty": 1,
+      "type": "true_false",
+      "source": "module_2",
+      "question": "VaR tells you the maximum possible loss on any given day.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "VaR is a threshold at a given confidence level, not a maximum. On the worst 5% of days (for 95% VaR), losses exceed VaR. There is no theoretical maximum loss — you could lose everything.",
+      "tags": [
+        "var",
+        "misconception"
+      ]
+    },
+    {
+      "id": "risk_metrics_016",
+      "topic": "risk_metrics",
+      "subtopic": "drawdown_duration",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_2",
+      "question": "Which metric best captures how long it takes a portfolio to recover from a drawdown?",
+      "choices": [
+        "A) Max drawdown",
+        "B) Drawdown duration",
+        "C) Sharpe ratio",
+        "D) VaR"
+      ],
+      "correct": 1,
+      "explanation": "Drawdown duration measures the time from peak to recovery (new high). Max drawdown measures depth. Both matter — a 10% drawdown lasting 2 years is psychologically harder than one lasting 2 months.",
+      "tags": [
+        "drawdown",
+        "duration",
+        "recovery"
+      ]
+    },
+    {
+      "id": "risk_metrics_017",
+      "topic": "risk_metrics",
+      "subtopic": "cvar_regulation",
+      "difficulty": 3,
+      "type": "explain",
+      "source": "module_2",
+      "question": "Explain why Basel III moved from VaR to Expected Shortfall (CVaR) for bank capital requirements.",
+      "choices": null,
+      "correct": null,
+      "explanation": "VaR has two problems: (1) it doesn't capture tail severity — a 95% VaR of -2% says nothing about whether the average tail loss is -3% or -10%, and (2) VaR is not sub-additive, meaning the VaR of a combined portfolio can exceed the sum of individual VaRs, which violates basic diversification logic. CVaR fixes both: it averages tail losses (capturing severity) and is sub-additive (diversification always helps or is neutral).",
+      "rubric": "Should mention: tail severity, sub-additivity, diversification properties, Basel III motivation.",
+      "tags": [
+        "cvar",
+        "var",
+        "regulation",
+        "sub_additivity"
+      ]
+    },
+    {
+      "id": "risk_metrics_018",
+      "topic": "risk_metrics",
+      "subtopic": "downside_deviation",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_2",
+      "question": "Downside deviation only considers returns that are:",
+      "choices": [
+        "A) Above the mean",
+        "B) Below a target (usually 0)",
+        "C) Within one standard deviation",
+        "D) In the top quartile"
+      ],
+      "correct": 1,
+      "explanation": "Downside deviation measures the volatility of returns below a target threshold (typically 0% or the risk-free rate). It ignores upside moves entirely.",
+      "tags": [
+        "downside_deviation",
+        "sortino"
+      ]
+    },
+    {
+      "id": "risk_metrics_019",
+      "topic": "risk_metrics",
+      "subtopic": "var_confidence",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_2",
+      "question": "Moving from 95% to 99% VaR will:",
+      "choices": [
+        "A) Make VaR less negative (smaller loss)",
+        "B) Make VaR more negative (larger loss)",
+        "C) Not change VaR",
+        "D) Double the VaR"
+      ],
+      "correct": 1,
+      "explanation": "Higher confidence = more extreme percentile = larger loss. 99% VaR looks at the worst 1% of days vs worst 5%, so the threshold is deeper in the tail.",
+      "tags": [
+        "var",
+        "confidence_level"
+      ]
+    },
+    {
+      "id": "risk_metrics_020",
+      "topic": "risk_metrics",
+      "subtopic": "sharpe_vs_sortino",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "module_2",
+      "question": "For a strategy with perfectly symmetric returns, Sharpe and Sortino ratios will be approximately equal.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "Even for symmetric returns, Sortino will be higher than Sharpe because downside deviation is computed only from negative returns (roughly half the data), making it smaller than total standard deviation. The ratio scales accordingly.",
+      "tags": [
+        "sharpe",
+        "sortino",
+        "symmetric"
+      ]
+    },
+    {
+      "id": "risk_metrics_021",
+      "topic": "risk_metrics",
+      "subtopic": "risk_decomp",
+      "difficulty": 3,
+      "type": "multiple_choice",
+      "source": "paleologo_ch3",
+      "question": "For a fundamental PM, which component of PnL reflects genuine skill?",
+      "choices": [
+        "A) Factor PnL",
+        "B) Idiosyncratic PnL",
+        "C) Total PnL",
+        "D) Market PnL"
+      ],
+      "correct": 1,
+      "explanation": "Factor PnL comes from market/sector exposure any index fund can replicate. Idiosyncratic PnL is the stock-specific alpha — the part factors can't explain. That's what investors pay 2-and-20 for.",
+      "tags": [
+        "pnl_attribution",
+        "alpha",
+        "factor_pnl"
+      ]
+    },
+    {
+      "id": "risk_metrics_022",
+      "topic": "risk_metrics",
+      "subtopic": "vol_of_portfolio",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_2",
+      "question": "Two stocks each have 20% vol and correlation of 0.5. An equal-weight portfolio has vol of approximately:",
+      "choices": [
+        "A) 20%",
+        "B) 17.3%",
+        "C) 14.1%",
+        "D) 10%"
+      ],
+      "correct": 1,
+      "explanation": "Port var = 0.5²×0.04 + 0.5²×0.04 + 2×0.5×0.5×0.5×0.04 = 0.01 + 0.01 + 0.01 = 0.03. Vol = sqrt(0.03) ≈ 17.3%. Diversification reduces vol when correlation < 1.",
+      "tags": [
+        "portfolio_vol",
+        "correlation",
+        "diversification"
+      ]
+    },
+    {
+      "id": "risk_metrics_023",
+      "topic": "risk_metrics",
+      "subtopic": "var_additivity",
+      "difficulty": 3,
+      "type": "true_false",
+      "source": "module_2",
+      "question": "VaR is sub-additive, meaning the VaR of a combined portfolio is always less than or equal to the sum of individual VaRs.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "VaR is NOT sub-additive in general — there exist cases where VaR(A+B) > VaR(A) + VaR(B). This is a well-known theoretical flaw. CVaR (Expected Shortfall) IS sub-additive, which is one reason regulators prefer it.",
+      "tags": [
+        "var",
+        "sub_additivity",
+        "cvar"
+      ]
+    },
+    {
+      "id": "risk_metrics_024",
+      "topic": "risk_metrics",
+      "subtopic": "drawdown_analysis",
+      "difficulty": 2,
+      "type": "explain",
+      "source": "module_2",
+      "question": "Your PM's strategy has a Sharpe of 1.5 but just hit a 25% max drawdown. How do you contextualize this for the risk committee?",
+      "choices": null,
+      "correct": null,
+      "explanation": "A Sharpe of 1.5 with typical equity-like vol (~15-20%) can absolutely produce a 25% drawdown — this is within the range of expected outcomes over multi-year periods. Rule of thumb: max drawdown ≈ 2-3x annual vol for most strategies. Present historical context, expected recovery time, and whether the drawdown was factor-driven (fixable) or alpha-driven (concerning).",
+      "rubric": "Should contextualize drawdown relative to Sharpe/vol, mention expected drawdown ranges, distinguish factor vs alpha losses.",
+      "tags": [
+        "drawdown",
+        "sharpe",
+        "risk_committee"
+      ]
+    },
+    {
+      "id": "risk_metrics_025",
+      "topic": "risk_metrics",
+      "subtopic": "average_absolute",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "paleologo_ch3",
+      "question": "For normally distributed returns with 1% daily vol, the average absolute daily return is approximately:",
+      "choices": [
+        "A) 1.0%",
+        "B) 0.8%",
+        "C) 0.5%",
+        "D) 1.5%"
+      ],
+      "correct": 1,
+      "explanation": "For a normal distribution, E[|X|] ≈ 0.8 × sigma. So with 1% daily vol, the average absolute daily move is about 0.8%.",
+      "tags": [
+        "volatility",
+        "normal_distribution"
+      ]
+    },
+    {
+      "id": "factor_models_001",
+      "topic": "factor_models",
+      "subtopic": "beta",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_3",
+      "question": "A stock with beta of 1.3 means:",
+      "choices": [
+        "A) It returns 1.3% per year",
+        "B) When the market moves 1%, the stock tends to move 1.3%",
+        "C) It has 30% more risk than the market",
+        "D) It outperforms the market by 30%"
+      ],
+      "correct": 1,
+      "explanation": "Beta measures sensitivity to the market. Beta 1.3 means the stock amplifies market moves by 30% — up and down.",
+      "tags": [
+        "beta",
+        "sensitivity"
+      ]
+    },
+    {
+      "id": "factor_models_002",
+      "topic": "factor_models",
+      "subtopic": "alpha",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_3",
+      "question": "In a CAPM regression, alpha represents:",
+      "choices": [
+        "A) The stock's total return",
+        "B) The stock's beta",
+        "C) Excess return not explained by market exposure",
+        "D) The risk-free rate"
+      ],
+      "correct": 2,
+      "explanation": "Alpha is the intercept of the CAPM regression: return beyond what beta × market would predict. Positive alpha suggests the stock outperforms its systematic risk.",
+      "tags": [
+        "alpha",
+        "capm"
+      ]
+    },
+    {
+      "id": "factor_models_003",
+      "topic": "factor_models",
+      "subtopic": "r_squared",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_3",
+      "question": "R-squared of 0.85 in a CAPM regression means:",
+      "choices": [
+        "A) Beta is 0.85",
+        "B) 85% of the stock's return variance is explained by the market",
+        "C) The stock returns 85% of what the market returns",
+        "D) Alpha is 15%"
+      ],
+      "correct": 1,
+      "explanation": "R² tells you how much of the stock's movement is explained by the factor(s). R²=0.85 means 85% is systematic (market-driven), 15% is idiosyncratic.",
+      "tags": [
+        "r_squared",
+        "variance_explained"
+      ]
+    },
+    {
+      "id": "factor_models_004",
+      "topic": "factor_models",
+      "subtopic": "fama_french",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_3",
+      "question": "The Fama-French 3-factor model adds which factors beyond market beta?",
+      "choices": [
+        "A) Momentum and quality",
+        "B) Size (SMB) and value (HML)",
+        "C) Industry and volatility",
+        "D) Liquidity and credit"
+      ],
+      "correct": 1,
+      "explanation": "Fama-French (1993) added SMB (Small Minus Big — size premium) and HML (High Minus Low book-to-market — value premium) to the market factor.",
+      "tags": [
+        "fama_french",
+        "smb",
+        "hml"
+      ]
+    },
+    {
+      "id": "factor_models_005",
+      "topic": "factor_models",
+      "subtopic": "beta",
+      "difficulty": 1,
+      "type": "true_false",
+      "source": "module_3",
+      "question": "A biotech stock with beta 0.3 is low risk.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "Beta measures market sensitivity, not total risk. A biotech awaiting FDA approval has low beta (moves independently of SPY) but enormous idiosyncratic risk from the binary event.",
+      "tags": [
+        "beta",
+        "idiosyncratic_risk",
+        "total_risk"
+      ]
+    },
+    {
+      "id": "factor_models_006",
+      "topic": "factor_models",
+      "subtopic": "rolling_beta",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_3",
+      "question": "Your PM's rolling beta jumped from 0.9 to 1.4 over 3 months. The most likely explanation is:",
+      "choices": [
+        "A) The risk-free rate changed",
+        "B) The PM added higher-beta stocks or increased market exposure",
+        "C) The market volatility decreased",
+        "D) Alpha improved"
+      ],
+      "correct": 1,
+      "explanation": "Rolling beta changes reflect shifts in portfolio composition. Adding tech/cyclical stocks, or increasing net long exposure, raises beta. This is a risk conversation — did the PM intend this?",
+      "tags": [
+        "rolling_beta",
+        "beta_drift",
+        "portfolio_composition"
+      ]
+    },
+    {
+      "id": "factor_models_007",
+      "topic": "factor_models",
+      "subtopic": "information_ratio",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_3",
+      "question": "The Information Ratio measures:",
+      "choices": [
+        "A) Total return divided by total risk",
+        "B) Alpha divided by tracking error (residual volatility)",
+        "C) Market return divided by market vol",
+        "D) Beta divided by R-squared"
+      ],
+      "correct": 1,
+      "explanation": "IR = alpha / tracking_error. It measures the quality of active management — how much excess return you generate per unit of active risk (deviation from benchmark).",
+      "tags": [
+        "information_ratio",
+        "alpha",
+        "tracking_error"
+      ]
+    },
+    {
+      "id": "factor_models_008",
+      "topic": "factor_models",
+      "subtopic": "beta_compression",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "paleologo_ch4",
+      "question": "During market crises, cross-sectional beta dispersion typically increases as stocks differentiate.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "In crises, betas compress — correlations spike toward 1 and stocks move together. There's LESS cross-sectional beta dispersion, not more. Everything falls together.",
+      "tags": [
+        "beta_compression",
+        "crisis",
+        "correlation"
+      ]
+    },
+    {
+      "id": "factor_models_009",
+      "topic": "factor_models",
+      "subtopic": "bab",
+      "difficulty": 3,
+      "type": "multiple_choice",
+      "source": "paleologo_ch5",
+      "question": "The Betting Against Beta (BAB) anomaly states that:",
+      "choices": [
+        "A) High-beta stocks outperform on a risk-adjusted basis",
+        "B) Low-beta stocks outperform on a risk-adjusted basis",
+        "C) Beta is useless for predicting returns",
+        "D) Beta is constant over time"
+      ],
+      "correct": 1,
+      "explanation": "Frazzini & Pedersen (2014): constrained investors (mutual funds, pensions) overweight high-beta stocks to boost returns, bidding up their prices. Low-beta stocks are underpriced and deliver better risk-adjusted returns.",
+      "tags": [
+        "bab",
+        "low_beta",
+        "anomaly"
+      ]
+    },
+    {
+      "id": "factor_models_010",
+      "topic": "factor_models",
+      "subtopic": "momentum",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch5",
+      "question": "The momentum factor's biggest risk is:",
+      "choices": [
+        "A) Gradual decay over years",
+        "B) Sudden violent reversals, especially on the short side",
+        "C) High transaction costs",
+        "D) Low Sharpe ratio"
+      ],
+      "correct": 1,
+      "explanation": "Momentum has fat left tails. Crashes come from the short side — beaten-down stocks rally violently (e.g., 2009 rebound). Distressed stocks are like deep OTM calls — high gamma when they recover.",
+      "tags": [
+        "momentum",
+        "tail_risk",
+        "crash_risk"
+      ]
+    },
+    {
+      "id": "factor_models_011",
+      "topic": "factor_models",
+      "subtopic": "capm",
+      "difficulty": 1,
+      "type": "explain",
+      "source": "module_3",
+      "question": "Explain the CAPM equation in plain English. What does each term represent?",
+      "choices": null,
+      "correct": null,
+      "explanation": "R_stock = alpha + beta × R_market + epsilon. Alpha: the stock's excess return beyond what market exposure explains. Beta: how much the stock moves per 1% market move. Epsilon: random daily noise (earnings surprises, news, etc.). The model says most stock movement comes from the market; alpha is what PMs get paid to find.",
+      "rubric": "Should explain alpha, beta, epsilon in plain English with market context.",
+      "tags": [
+        "capm",
+        "alpha",
+        "beta",
+        "epsilon"
+      ]
+    },
+    {
+      "id": "factor_models_012",
+      "topic": "factor_models",
+      "subtopic": "factor_types",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch4",
+      "question": "Which factor model approach do practitioners (risk vendors like Barra/Axioma) actually use?",
+      "choices": [
+        "A) Time-series regression on macro factors",
+        "B) Fundamental/characteristic-based models",
+        "C) PCA on return covariance",
+        "D) Equal-weight all factors"
+      ],
+      "correct": 1,
+      "explanation": "Practitioners use fundamental models: stock characteristics (beta, industry, value ratios) are the loadings. Factor returns are estimated via daily cross-sectional regression. Time-series and PCA are more academic.",
+      "tags": [
+        "fundamental_models",
+        "barra",
+        "risk_vendors"
+      ]
+    },
+    {
+      "id": "factor_models_013",
+      "topic": "factor_models",
+      "subtopic": "short_interest",
+      "difficulty": 3,
+      "type": "multiple_choice",
+      "source": "paleologo_ch5",
+      "question": "Heavily shorted stocks tend to:",
+      "choices": [
+        "A) Outperform the market",
+        "B) Underperform the market",
+        "C) Match the market",
+        "D) Have lower volatility"
+      ],
+      "correct": 1,
+      "explanation": "Short interest is the strongest anomaly — heavily shorted stocks significantly underperform. Informed/unconstrained investors short overpriced stocks. But beware short squeeze risk.",
+      "tags": [
+        "short_interest",
+        "anomaly",
+        "underperformance"
+      ]
+    },
+    {
+      "id": "factor_models_014",
+      "topic": "factor_models",
+      "subtopic": "fmp",
+      "difficulty": 3,
+      "type": "true_false",
+      "source": "paleologo_ch4",
+      "question": "A factor-mimicking portfolio (FMP) for an industry factor is the same as that sector's ETF.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "FMPs have zero exposure to ALL other factors, by construction. A sector ETF has uncontrolled exposure to beta, size, value, momentum, etc. FMPs are pure factor plays; ETFs are not.",
+      "tags": [
+        "factor_mimicking_portfolio",
+        "etf",
+        "factor_purity"
+      ]
+    },
+    {
+      "id": "factor_models_015",
+      "topic": "factor_models",
+      "subtopic": "value_factor",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch5",
+      "question": "The value factor (HML) measures:",
+      "choices": [
+        "A) Market returns minus risk-free rate",
+        "B) Returns of high book-to-market stocks minus low book-to-market stocks",
+        "C) Small-cap minus large-cap returns",
+        "D) Winner minus loser stock returns"
+      ],
+      "correct": 1,
+      "explanation": "HML = High Minus Low book-to-market (or equivalently, cheap vs expensive stocks). Value stocks have high book-to-market ratios.",
+      "tags": [
+        "hml",
+        "value",
+        "book_to_market"
+      ]
+    },
+    {
+      "id": "factor_models_016",
+      "topic": "factor_models",
+      "subtopic": "momentum_term",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch5",
+      "question": "Momentum's term structure shows:",
+      "choices": [
+        "A) Always positive returns at all horizons",
+        "B) Reversal at 0-1 month, continuation at 1-12 months, reversal beyond 12 months",
+        "C) Linear increase with time horizon",
+        "D) No pattern at all"
+      ],
+      "correct": 1,
+      "explanation": "0-1 month: short-term reversal (mean reversion). 1-12 months: momentum (continuation). >12 months: long-term reversal. The sweet spot for momentum strategies is the 1-12 month window.",
+      "tags": [
+        "momentum",
+        "term_structure",
+        "reversal"
+      ]
+    },
+    {
+      "id": "factor_models_017",
+      "topic": "factor_models",
+      "subtopic": "factor_exposure",
+      "difficulty": 2,
+      "type": "explain",
+      "source": "module_3",
+      "question": "Your PM's CAPM regression shows: alpha = 0.02% daily, beta = 1.15, R² = 0.72. Interpret these results and what actions you might recommend.",
+      "choices": null,
+      "correct": null,
+      "explanation": "Alpha 0.02% daily ≈ 5% annualized — decent but check the t-statistic for significance. Beta 1.15 means the portfolio amplifies market moves by 15%. R² = 0.72 means 72% of variance is market-driven, 28% is idiosyncratic. If the PM's mandate is market-neutral, beta of 1.15 is too high — recommend hedging with SPY shorts. If they run a long-biased book, check whether beta is within their mandate limits.",
+      "rubric": "Should interpret all three statistics, mention t-stat for alpha significance, connect to PM mandate and potential hedging action.",
+      "tags": [
+        "capm",
+        "interpretation",
+        "hedging"
+      ]
+    },
+    {
+      "id": "factor_models_018",
+      "topic": "factor_models",
+      "subtopic": "profitability",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch5",
+      "question": "The profitability/quality factor tends to have:",
+      "choices": [
+        "A) High returns and high volatility",
+        "B) Positive returns with defensive characteristics",
+        "C) Negative returns like the volatility factor",
+        "D) No reliable pattern"
+      ],
+      "correct": 1,
+      "explanation": "High-profitability stocks (high ROE, margins) tend to have low vol, low beta, and positive expected returns — the opposite of what CAPM predicts. This is the 'quality' premium.",
+      "tags": [
+        "profitability",
+        "quality",
+        "defensive"
+      ]
+    },
+    {
+      "id": "factor_models_019",
+      "topic": "factor_models",
+      "subtopic": "alpha_significance",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "module_3",
+      "question": "A CAPM alpha of 0.03% per day is economically meaningful regardless of its t-statistic.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "Statistical significance matters. Alpha of 0.03% daily ≈ 7.5% annual sounds great, but if the t-stat is 0.5, it's indistinguishable from noise. You need t > 2 to have reasonable confidence.",
+      "tags": [
+        "alpha",
+        "t_statistic",
+        "significance"
+      ]
+    },
+    {
+      "id": "factor_models_020",
+      "topic": "factor_models",
+      "subtopic": "covariance_reduction",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch4",
+      "question": "For 5,000 stocks, a full covariance matrix has ~12.5 million entries. A factor model with 50 factors reduces this to estimating approximately:",
+      "choices": [
+        "A) 50 parameters",
+        "B) 250,000 parameters",
+        "C) 5,000 factor loadings + 1,275 factor covariances + 5,000 idio vols",
+        "D) 12.5 million parameters"
+      ],
+      "correct": 2,
+      "explanation": "Factor model: n×m loadings (250,000) + m×(m+1)/2 factor covariances (1,275) + n idio vols (5,000) ≈ 256,275 parameters vs 12.5 million. Massive dimensionality reduction.",
+      "tags": [
+        "covariance",
+        "factor_model",
+        "dimensionality"
+      ]
+    },
+    {
+      "id": "factor_models_021",
+      "topic": "factor_models",
+      "subtopic": "hedging",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "paleologo_ch3",
+      "question": "To make a portfolio market-neutral, you should:",
+      "choices": [
+        "A) Set all stock weights to zero",
+        "B) Short SPY (or futures) equal to the portfolio's dollar beta",
+        "C) Buy more volatile stocks",
+        "D) Remove all factor exposures"
+      ],
+      "correct": 1,
+      "explanation": "Dollar beta exposure = sum(beta_i × NMV_i). Short that dollar amount of SPY. Now the portfolio's market beta is ~0 and returns are purely idiosyncratic.",
+      "tags": [
+        "hedging",
+        "market_neutral",
+        "dollar_beta"
+      ]
+    },
+    {
+      "id": "factor_models_022",
+      "topic": "factor_models",
+      "subtopic": "crowding",
+      "difficulty": 3,
+      "type": "true_false",
+      "source": "paleologo_ch5",
+      "question": "The biggest risk of crowded hedge fund positions (high AMH overlap) is that losses trigger a deleveraging feedback loop.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 1,
+      "explanation": "Endogenous risk: external shock → forced selling → excess supply → prices drop → more forced selling. This deleveraging cycle is self-reinforcing and is the most dangerous dynamic for crowded positions.",
+      "tags": [
+        "crowding",
+        "amh",
+        "deleveraging",
+        "endogenous_risk"
+      ]
+    },
+    {
+      "id": "factor_models_023",
+      "topic": "factor_models",
+      "subtopic": "tracking_error",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_3",
+      "question": "Tracking error is the:",
+      "choices": [
+        "A) Difference between portfolio and benchmark returns",
+        "B) Standard deviation of the difference between portfolio and benchmark returns",
+        "C) Correlation with the benchmark",
+        "D) Maximum underperformance vs benchmark"
+      ],
+      "correct": 1,
+      "explanation": "Tracking error = vol of (portfolio_return - benchmark_return). It measures how much your returns deviate from the benchmark. Active managers have higher tracking error.",
+      "tags": [
+        "tracking_error",
+        "benchmark"
+      ]
+    },
+    {
+      "id": "factor_models_024",
+      "topic": "factor_models",
+      "subtopic": "factor_return_sign",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch5",
+      "question": "Which factor has NEGATIVE expected returns?",
+      "choices": [
+        "A) Market (equity risk premium)",
+        "B) Momentum (1-12 month)",
+        "C) Beta factor (high-beta minus low-beta)",
+        "D) Profitability"
+      ],
+      "correct": 2,
+      "explanation": "The beta factor (long high-beta, short low-beta) has negative expected returns — the BAB anomaly. Constrained investors overpay for high-beta stocks.",
+      "tags": [
+        "bab",
+        "factor_returns",
+        "negative_premium"
+      ]
+    },
+    {
+      "id": "factor_models_025",
+      "topic": "factor_models",
+      "subtopic": "factor_model_choice",
+      "difficulty": 3,
+      "type": "explain",
+      "source": "paleologo_ch4",
+      "question": "Compare fundamental, time-series, and statistical (PCA) factor models. Which would you recommend for a mid-sized hedge fund and why?",
+      "choices": null,
+      "correct": null,
+      "explanation": "Fundamental models use stock characteristics as loadings and estimate factor returns via cross-sectional regression — highest interpretability and practical performance. Time-series models regress on macro indicators — more academic, lower performance. PCA extracts statistical factors from return covariance — minimal data requirements but hard to interpret beyond factor 1 (≈ market). For a hedge fund: fundamental models (Barra, Axioma) because they're interpretable, match how PMs think about exposure, and integrate with risk management workflows.",
+      "rubric": "Should compare all three approaches on data needs, performance, interpretability, and give a practical recommendation with reasoning.",
+      "tags": [
+        "fundamental",
+        "time_series",
+        "pca",
+        "comparison"
+      ]
+    },
+    {
+      "id": "factor_models_026",
+      "topic": "factor_models",
+      "subtopic": "volatility_factor",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch5",
+      "question": "The volatility factor (long high-vol, short low-vol) historically delivers:",
+      "choices": [
+        "A) Strong positive returns",
+        "B) Negative returns (low-vol anomaly)",
+        "C) Market-like returns",
+        "D) Zero returns"
+      ],
+      "correct": 1,
+      "explanation": "Long high-vol / short low-vol delivers negative returns — the low-vol anomaly. Closely related to BAB. Constrained investors overweight volatile stocks, driving up their prices.",
+      "tags": [
+        "volatility_factor",
+        "low_vol_anomaly"
+      ]
+    },
+    {
+      "id": "factor_models_027",
+      "topic": "factor_models",
+      "subtopic": "industry_factors",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "paleologo_ch5",
+      "question": "Industry factor returns are computed by:",
+      "choices": [
+        "A) Averaging returns of sector ETFs",
+        "B) Cross-sectional regression of stock returns on industry membership",
+        "C) Subtracting market returns",
+        "D) Sorting stocks by market cap"
+      ],
+      "correct": 1,
+      "explanation": "Industry factors use binary loadings (0 or 1 per stock). Factor returns come from cross-sectional regression, not ETF returns. Industry FMPs have zero exposure to style factors — sector ETFs don't.",
+      "tags": [
+        "industry_factors",
+        "cross_sectional_regression"
+      ]
+    },
+    {
+      "id": "factor_models_028",
+      "topic": "factor_models",
+      "subtopic": "pms_momentum",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "paleologo_ch5",
+      "question": "A successful fundamental PM naturally accumulates momentum exposure over time.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 1,
+      "explanation": "If a PM buys winners and shorts losers based on fundamentals, their book naturally becomes long recent winners and short recent losers — which is exactly the momentum factor. PMs must actively manage this unintended exposure.",
+      "tags": [
+        "momentum",
+        "pm_behavior",
+        "factor_drift"
+      ]
+    },
+    {
+      "id": "portfolio_opt_001",
+      "topic": "portfolio_opt",
+      "subtopic": "efficient_frontier",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_4",
+      "question": "The efficient frontier represents:",
+      "choices": [
+        "A) Portfolios with the lowest possible returns",
+        "B) Portfolios giving maximum return for each level of risk",
+        "C) Equally-weighted portfolios",
+        "D) Index funds only"
+      ],
+      "correct": 1,
+      "explanation": "Markowitz (1952): the efficient frontier is the set of portfolios that maximize expected return for each level of volatility. Anything below is suboptimal — same risk, less return.",
+      "tags": [
+        "efficient_frontier",
+        "markowitz"
+      ]
+    },
+    {
+      "id": "portfolio_opt_002",
+      "topic": "portfolio_opt",
+      "subtopic": "min_variance",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_4",
+      "question": "The minimum variance portfolio:",
+      "choices": [
+        "A) Has the highest Sharpe ratio",
+        "B) Has the lowest possible volatility among all portfolios",
+        "C) Invests equally in all assets",
+        "D) Always has the highest return"
+      ],
+      "correct": 1,
+      "explanation": "The min-var portfolio sits at the leftmost point of the efficient frontier. It minimizes total portfolio volatility regardless of expected returns.",
+      "tags": [
+        "minimum_variance",
+        "efficient_frontier"
+      ]
+    },
+    {
+      "id": "portfolio_opt_003",
+      "topic": "portfolio_opt",
+      "subtopic": "tangency",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_4",
+      "question": "The maximum Sharpe (tangency) portfolio is found by:",
+      "choices": [
+        "A) Equal-weighting all assets",
+        "B) Drawing a line from the risk-free rate tangent to the efficient frontier",
+        "C) Minimizing volatility",
+        "D) Maximizing total return"
+      ],
+      "correct": 1,
+      "explanation": "The tangency portfolio is where the capital market line (from risk-free rate) touches the efficient frontier. It maximizes the Sharpe ratio.",
+      "tags": [
+        "tangency",
+        "max_sharpe",
+        "capital_market_line"
+      ]
+    },
+    {
+      "id": "portfolio_opt_004",
+      "topic": "portfolio_opt",
+      "subtopic": "risk_parity",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_4",
+      "question": "Risk parity means:",
+      "choices": [
+        "A) Equal dollar weights across assets",
+        "B) Each asset contributes equally to total portfolio risk",
+        "C) Equal expected returns from each asset",
+        "D) Zero correlation between assets"
+      ],
+      "correct": 1,
+      "explanation": "Risk parity equalizes risk contributions, not dollar weights. A low-vol asset like bonds gets a larger weight than a high-vol asset like equities, so both contribute the same amount of portfolio risk.",
+      "tags": [
+        "risk_parity",
+        "risk_contribution"
+      ]
+    },
+    {
+      "id": "portfolio_opt_005",
+      "topic": "portfolio_opt",
+      "subtopic": "diversification",
+      "difficulty": 1,
+      "type": "true_false",
+      "source": "module_4",
+      "question": "Adding more stocks to a portfolio always reduces its volatility.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "Adding stocks reduces vol only if they have correlation < 1 with the existing portfolio. Adding a perfectly correlated stock doesn't help. Adding a highly correlated, volatile stock could increase portfolio vol.",
+      "tags": [
+        "diversification",
+        "correlation"
+      ]
+    },
+    {
+      "id": "portfolio_opt_006",
+      "topic": "portfolio_opt",
+      "subtopic": "portfolio_variance",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_4",
+      "question": "Portfolio variance formula (2 assets, weights w1, w2) is:",
+      "choices": [
+        "A) w1*σ1 + w2*σ2",
+        "B) w1²σ1² + w2²σ2² + 2*w1*w2*ρ*σ1*σ2",
+        "C) (w1+w2)*(σ1+σ2)",
+        "D) w1*σ1² + w2*σ2²"
+      ],
+      "correct": 1,
+      "explanation": "Portfolio variance = w'Σw. For 2 assets: w1²σ1² + w2²σ2² + 2w1w2ρσ1σ2. The cross-term (covariance) is where diversification happens — when ρ < 1, this term is smaller.",
+      "tags": [
+        "portfolio_variance",
+        "covariance",
+        "formula"
+      ]
+    },
+    {
+      "id": "portfolio_opt_007",
+      "topic": "portfolio_opt",
+      "subtopic": "markowitz_limitations",
+      "difficulty": 3,
+      "type": "explain",
+      "source": "module_4",
+      "question": "What are the practical limitations of mean-variance optimization, and how do practitioners address them?",
+      "choices": null,
+      "correct": null,
+      "explanation": "MVO is extremely sensitive to expected return estimates — small changes in mu cause wild swings in optimal weights. Covariance estimates are also noisy with limited data. Solutions: (1) shrinkage estimators (Ledoit-Wolf), (2) Black-Litterman (anchor to equilibrium, adjust with views), (3) constraints (position limits, sector caps), (4) robust optimization. In practice, few PMs use unconstrained MVO — they add guardrails.",
+      "rubric": "Should mention sensitivity to inputs (especially returns), estimation error, and at least 2 practical solutions.",
+      "tags": [
+        "mean_variance",
+        "limitations",
+        "estimation_error",
+        "shrinkage"
+      ]
+    },
+    {
+      "id": "portfolio_opt_008",
+      "topic": "portfolio_opt",
+      "subtopic": "concentration",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_4",
+      "question": "Concentrated portfolios (10-20 stocks) compared to diversified ones (100+ stocks):",
+      "choices": [
+        "A) Always have higher Sharpe ratios",
+        "B) Have higher idiosyncratic risk but potentially higher alpha",
+        "C) Have lower maximum drawdown",
+        "D) Are easier to manage from a risk perspective"
+      ],
+      "correct": 1,
+      "explanation": "Concentration amplifies stock-picking skill (more alpha per dollar) but also amplifies mistakes. Idiosyncratic risk is high because diversification is limited. It's a bet on conviction.",
+      "tags": [
+        "concentration",
+        "diversification",
+        "idiosyncratic_risk"
+      ]
+    },
+    {
+      "id": "portfolio_opt_009",
+      "topic": "portfolio_opt",
+      "subtopic": "risk_contribution",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_4",
+      "question": "In a 60/40 stock/bond portfolio, stocks typically contribute approximately what percentage of total risk?",
+      "choices": [
+        "A) 60%",
+        "B) 75%",
+        "C) 90%",
+        "D) 40%"
+      ],
+      "correct": 2,
+      "explanation": "Stocks have ~3-4x the vol of bonds. In a 60/40 portfolio, stocks contribute ~90% of total portfolio variance despite being only 60% of capital. This is why risk parity overweights bonds.",
+      "tags": [
+        "risk_contribution",
+        "sixty_forty",
+        "stocks_bonds"
+      ]
+    },
+    {
+      "id": "portfolio_opt_010",
+      "topic": "portfolio_opt",
+      "subtopic": "equal_weight",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "module_4",
+      "question": "Equal-weight portfolios consistently outperform market-cap-weight portfolios.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "Equal-weight has outperformed historically (small-cap tilt, rebalancing effect) but not consistently — it underperforms in large-cap-led markets. It also has higher turnover and capacity constraints.",
+      "tags": [
+        "equal_weight",
+        "market_cap_weight"
+      ]
+    },
+    {
+      "id": "portfolio_opt_011",
+      "topic": "portfolio_opt",
+      "subtopic": "black_litterman",
+      "difficulty": 3,
+      "type": "multiple_choice",
+      "source": "module_4",
+      "question": "Black-Litterman improves on standard MVO by:",
+      "choices": [
+        "A) Removing the need for a covariance matrix",
+        "B) Starting from market equilibrium returns and adjusting with investor views",
+        "C) Using only historical returns",
+        "D) Ignoring correlations"
+      ],
+      "correct": 1,
+      "explanation": "BL starts with implied equilibrium returns (from market cap weights) rather than noisy historical estimates, then tilts toward the investor's views. The result is more stable, intuitive portfolios.",
+      "tags": [
+        "black_litterman",
+        "equilibrium",
+        "views"
+      ]
+    },
+    {
+      "id": "portfolio_opt_012",
+      "topic": "portfolio_opt",
+      "subtopic": "rebalancing",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_4",
+      "question": "Regular portfolio rebalancing acts as a natural:",
+      "choices": [
+        "A) Momentum strategy",
+        "B) Mean reversion strategy",
+        "C) Buy-and-hold strategy",
+        "D) Volatility targeting strategy"
+      ],
+      "correct": 1,
+      "explanation": "Rebalancing sells winners (overweight) and buys losers (underweight) to return to target weights. This is inherently contrarian / mean-reverting.",
+      "tags": [
+        "rebalancing",
+        "mean_reversion"
+      ]
+    },
+    {
+      "id": "portfolio_opt_013",
+      "topic": "portfolio_opt",
+      "subtopic": "risk_parity_explanation",
+      "difficulty": 2,
+      "type": "explain",
+      "source": "module_4",
+      "question": "Explain risk parity to a PM who only knows equal-weight and market-cap-weight portfolios.",
+      "choices": null,
+      "correct": null,
+      "explanation": "Equal-weight gives each stock the same dollars. Market-cap-weight gives the same as the index. Risk parity gives each stock the same RISK contribution. A low-vol utility stock gets more dollars than a high-vol tech stock, because it takes more dollars of the utility to generate the same risk as a smaller tech position. The result: truly diversified risk, not just diversified dollars.",
+      "rubric": "Should contrast with equal-weight and cap-weight, explain risk contribution concept, give an intuitive example.",
+      "tags": [
+        "risk_parity",
+        "explanation",
+        "intuition"
+      ]
+    },
+    {
+      "id": "portfolio_opt_014",
+      "topic": "portfolio_opt",
+      "subtopic": "correlation_benefit",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_4",
+      "question": "Diversification benefit is greatest when assets have:",
+      "choices": [
+        "A) Correlation of +1",
+        "B) Correlation of 0",
+        "C) Correlation of -1",
+        "D) High individual volatility"
+      ],
+      "correct": 2,
+      "explanation": "Correlation of -1 gives maximum diversification — assets perfectly offset each other. Portfolio vol can theoretically reach zero. In practice, correlations near 0 provide substantial benefit.",
+      "tags": [
+        "correlation",
+        "diversification",
+        "benefit"
+      ]
+    },
+    {
+      "id": "portfolio_opt_015",
+      "topic": "portfolio_opt",
+      "subtopic": "short_selling",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "module_4",
+      "question": "An unconstrained mean-variance optimizer often produces extreme short positions.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 1,
+      "explanation": "Without position constraints, MVO exploits tiny differences in expected returns by taking massive long/short positions. This is one reason practitioners always add constraints (no-shorting, position limits).",
+      "tags": [
+        "mean_variance",
+        "short_selling",
+        "constraints"
+      ]
+    },
+    {
+      "id": "portfolio_opt_016",
+      "topic": "portfolio_opt",
+      "subtopic": "portfolio_return",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_4",
+      "question": "Portfolio expected return is a __ average of individual asset returns:",
+      "choices": [
+        "A) Geometric",
+        "B) Harmonic",
+        "C) Weighted arithmetic",
+        "D) Unweighted arithmetic"
+      ],
+      "correct": 2,
+      "explanation": "E[R_port] = w1*E[R1] + w2*E[R2] + ... = w'μ. Portfolio return is a simple weighted average of individual expected returns.",
+      "tags": [
+        "portfolio_return",
+        "weighted_average"
+      ]
+    },
+    {
+      "id": "portfolio_opt_017",
+      "topic": "portfolio_opt",
+      "subtopic": "covariance_impact",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_4",
+      "question": "Adding an asset with negative correlation to your portfolio will:",
+      "choices": [
+        "A) Always increase portfolio return",
+        "B) Reduce portfolio volatility",
+        "C) Increase portfolio beta",
+        "D) Have no effect on risk"
+      ],
+      "correct": 1,
+      "explanation": "Negative correlation means the asset moves opposite to the portfolio, offsetting some risk. The cross-term in the portfolio variance formula becomes negative, reducing total variance.",
+      "tags": [
+        "negative_correlation",
+        "diversification",
+        "variance"
+      ]
+    },
+    {
+      "id": "portfolio_opt_018",
+      "topic": "portfolio_opt",
+      "subtopic": "risk_parity_vs_mv",
+      "difficulty": 3,
+      "type": "explain",
+      "source": "module_4",
+      "question": "Your CIO asks: 'Why don't we just use mean-variance optimization instead of risk parity?' Provide a concise argument.",
+      "choices": null,
+      "correct": null,
+      "explanation": "MVO requires accurate expected return estimates, which are nearly impossible to get right. Small errors in expected returns cause wildly different portfolios. Risk parity only needs a covariance matrix (which is much more stable to estimate) and makes no bet on expected returns at all. When your return forecasts are noisy — which they almost always are — risk parity produces more robust, stable portfolios. MVO wins only if you have truly superior return forecasts.",
+      "rubric": "Should mention: MVO's sensitivity to return estimates, covariance being more stable, robustness of risk parity, when MVO wins.",
+      "tags": [
+        "risk_parity",
+        "mean_variance",
+        "comparison",
+        "robustness"
+      ]
+    },
+    {
+      "id": "portfolio_opt_019",
+      "topic": "portfolio_opt",
+      "subtopic": "sharpe_optimization",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_4",
+      "question": "When maximizing portfolio Sharpe ratio, the optimizer is actually minimizing:",
+      "choices": [
+        "A) Total return",
+        "B) -(Return - Rf) / Volatility",
+        "C) Portfolio volatility only",
+        "D) Number of assets"
+      ],
+      "correct": 1,
+      "explanation": "Max Sharpe ≡ min(-Sharpe) = min(-(Return - Rf)/Vol). The optimizer balances return and risk simultaneously through this ratio.",
+      "tags": [
+        "sharpe",
+        "optimization",
+        "tangency"
+      ]
+    },
+    {
+      "id": "portfolio_opt_020",
+      "topic": "portfolio_opt",
+      "subtopic": "estimation_error",
+      "difficulty": 3,
+      "type": "multiple_choice",
+      "source": "module_4",
+      "question": "In mean-variance optimization, which input has the MOST impact on the quality of the output?",
+      "choices": [
+        "A) Covariance matrix",
+        "B) Expected returns",
+        "C) Risk-free rate",
+        "D) Number of assets"
+      ],
+      "correct": 1,
+      "explanation": "Expected returns are the most impactful AND the hardest to estimate accurately. MVO is extremely sensitive to small changes in expected returns. This is why BL and risk parity avoid directly estimating returns.",
+      "tags": [
+        "estimation_error",
+        "expected_returns",
+        "sensitivity"
+      ]
+    },
+    {
+      "id": "portfolio_opt_021",
+      "topic": "portfolio_opt",
+      "subtopic": "global_min_var",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "module_4",
+      "question": "The global minimum variance portfolio requires no expected return estimates — only the covariance matrix.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 1,
+      "explanation": "Min-var minimizes w'Σw subject to weights summing to 1. No mu vector needed. This makes it more robust than max-Sharpe, which depends on noisy return estimates.",
+      "tags": [
+        "minimum_variance",
+        "covariance",
+        "robust"
+      ]
+    },
+    {
+      "id": "portfolio_opt_022",
+      "topic": "portfolio_opt",
+      "subtopic": "leverage_risk_parity",
+      "difficulty": 3,
+      "type": "multiple_choice",
+      "source": "module_4",
+      "question": "Risk parity portfolios typically require leverage because:",
+      "choices": [
+        "A) They short stocks",
+        "B) They overweight low-vol bonds, which need leverage to match equity-like returns",
+        "C) They use derivatives",
+        "D) They invest in alternatives"
+      ],
+      "correct": 1,
+      "explanation": "Risk parity allocates heavily to bonds (low vol) for equal risk contribution. To achieve competitive returns, you lever up the low-vol allocations. Bridgewater's All Weather is the famous example.",
+      "tags": [
+        "risk_parity",
+        "leverage",
+        "bonds"
+      ]
+    },
+    {
+      "id": "strategies_001",
+      "topic": "strategies",
+      "subtopic": "momentum",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_5",
+      "question": "A momentum strategy buys stocks that:",
+      "choices": [
+        "A) Have low P/E ratios",
+        "B) Have risen over the past 1-12 months",
+        "C) Pay high dividends",
+        "D) Have low beta"
+      ],
+      "correct": 1,
+      "explanation": "Momentum = 'winners keep winning.' Buy recent outperformers, short recent underperformers. The signal is typically 1-12 month past returns (skipping the most recent month to avoid reversal).",
+      "tags": [
+        "momentum",
+        "signal"
+      ]
+    },
+    {
+      "id": "strategies_002",
+      "topic": "strategies",
+      "subtopic": "mean_reversion",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_5",
+      "question": "A pairs trading strategy profits when:",
+      "choices": [
+        "A) Both stocks go up",
+        "B) A temporarily diverged pair converges back to its historical relationship",
+        "C) Both stocks go down",
+        "D) One stock splits"
+      ],
+      "correct": 1,
+      "explanation": "Pairs trading is mean reversion: find two historically correlated stocks, trade the spread when it diverges. Profit when the spread reverts. Market-neutral by construction.",
+      "tags": [
+        "pairs_trading",
+        "mean_reversion",
+        "spread"
+      ]
+    },
+    {
+      "id": "strategies_003",
+      "topic": "strategies",
+      "subtopic": "lookahead_bias",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_5",
+      "question": "Lookahead bias in backtesting means:",
+      "choices": [
+        "A) Testing too many strategies",
+        "B) Using information that wasn't available at the time of the trading decision",
+        "C) Having too little data",
+        "D) Using the wrong benchmark"
+      ],
+      "correct": 1,
+      "explanation": "Lookahead bias occurs when your backtest uses future data to make past decisions. Example: using tomorrow's close to decide today's trade. This inflates performance and is the most common backtesting error.",
+      "tags": [
+        "lookahead_bias",
+        "backtesting"
+      ]
+    },
+    {
+      "id": "strategies_004",
+      "topic": "strategies",
+      "subtopic": "transaction_costs",
+      "difficulty": 1,
+      "type": "true_false",
+      "source": "module_5",
+      "question": "A strategy with Sharpe 2.0 before costs will always be profitable after transaction costs.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "High-turnover strategies can lose their entire edge to costs. A strategy turning over 200% annually at 10bps per trade pays ~40bps/month in costs, which can destroy even a Sharpe 2 strategy if margins are thin.",
+      "tags": [
+        "transaction_costs",
+        "turnover",
+        "sharpe"
+      ]
+    },
+    {
+      "id": "strategies_005",
+      "topic": "strategies",
+      "subtopic": "overfitting",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_5",
+      "question": "The biggest danger of testing many strategy variants on the same data is:",
+      "choices": [
+        "A) Running out of computing power",
+        "B) Overfitting — finding patterns that are noise, not signal",
+        "C) Making the code too complex",
+        "D) Using too much memory"
+      ],
+      "correct": 1,
+      "explanation": "Multiple testing / p-hacking: if you test 100 strategies, ~5 will look significant at the 5% level by chance alone. Out-of-sample testing and economic rationale are essential guards against overfitting.",
+      "tags": [
+        "overfitting",
+        "multiple_testing",
+        "p_hacking"
+      ]
+    },
+    {
+      "id": "strategies_006",
+      "topic": "strategies",
+      "subtopic": "turnover",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_5",
+      "question": "Portfolio turnover of 200% annually means:",
+      "choices": [
+        "A) You replace 2% of the portfolio each year",
+        "B) You replace the entire portfolio twice per year on average",
+        "C) You hold each stock for 200 days",
+        "D) Your returns are 200%"
+      ],
+      "correct": 1,
+      "explanation": "Turnover of 200% means you buy/sell $2 of stock for every $1 of portfolio per year. Average holding period ≈ 6 months. High turnover amplifies transaction cost drag.",
+      "tags": [
+        "turnover",
+        "holding_period",
+        "transaction_costs"
+      ]
+    },
+    {
+      "id": "strategies_007",
+      "topic": "strategies",
+      "subtopic": "backtest_checklist",
+      "difficulty": 2,
+      "type": "explain",
+      "source": "module_5",
+      "question": "List the key checks you should perform before trusting a backtest result.",
+      "choices": null,
+      "correct": null,
+      "explanation": "1) No lookahead bias — only use data available at decision time. 2) Include realistic transaction costs (10-50bps depending on liquidity). 3) Test out-of-sample (not just in-sample). 4) Check for survivorship bias. 5) Verify economic rationale — can you explain WHY the strategy works? 6) Check turnover and capacity — can it be implemented at scale? 7) Stress test across different market regimes.",
+      "rubric": "Should mention at least: lookahead bias, transaction costs, out-of-sample testing, and economic rationale.",
+      "tags": [
+        "backtesting",
+        "checklist",
+        "best_practices"
+      ]
+    },
+    {
+      "id": "strategies_008",
+      "topic": "strategies",
+      "subtopic": "sharpe_interpretation",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_5",
+      "question": "A strategy Sharpe ratio of 0.5 is considered:",
+      "choices": [
+        "A) Excellent",
+        "B) Good",
+        "C) Mediocre but potentially viable",
+        "D) Worthless"
+      ],
+      "correct": 2,
+      "explanation": "Sharpe < 0.5 is weak. 0.5-1.0 is decent for long-only. 1.0-2.0 is good for a hedge fund strategy. >2.0 is exceptional and suspicious (check for overfitting). Context matters — Sharpe 0.5 with capacity is valuable.",
+      "tags": [
+        "sharpe",
+        "interpretation",
+        "benchmarks"
+      ]
+    },
+    {
+      "id": "strategies_009",
+      "topic": "strategies",
+      "subtopic": "vectorized",
+      "difficulty": 1,
+      "type": "true_false",
+      "source": "module_5",
+      "question": "A vectorized backtester is more realistic than an event-driven backtester for production strategies.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "Vectorized backtests are simpler and faster (great for learning) but can't model execution realities like fill rates, market impact, and queuing. Event-driven backtests are closer to production but more complex.",
+      "tags": [
+        "vectorized",
+        "event_driven",
+        "backtesting"
+      ]
+    },
+    {
+      "id": "strategies_010",
+      "topic": "strategies",
+      "subtopic": "momentum_signal",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_5",
+      "question": "Why do most momentum strategies skip the most recent month when computing signals?",
+      "choices": [
+        "A) Data isn't available yet",
+        "B) Short-term reversal effect in the most recent month",
+        "C) To reduce computation time",
+        "D) Regulatory requirement"
+      ],
+      "correct": 1,
+      "explanation": "The 0-1 month window shows SHORT-TERM REVERSAL, not momentum. Including it weakens the signal. The classic momentum signal uses months 2-12 (Jegadeesh & Titman, 1993).",
+      "tags": [
+        "momentum",
+        "reversal",
+        "signal_construction"
+      ]
+    },
+    {
+      "id": "strategies_011",
+      "topic": "strategies",
+      "subtopic": "capacity",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_5",
+      "question": "A strategy that works on paper with $1M but fails at $100M most likely suffers from:",
+      "choices": [
+        "A) Bad math",
+        "B) Market impact and limited liquidity",
+        "C) Higher management fees",
+        "D) More volatile markets"
+      ],
+      "correct": 1,
+      "explanation": "Market impact: larger orders move prices against you. Strategies in small-cap or illiquid stocks lose their edge as AUM grows because you can't trade without moving the market.",
+      "tags": [
+        "capacity",
+        "market_impact",
+        "liquidity"
+      ]
+    },
+    {
+      "id": "strategies_012",
+      "topic": "strategies",
+      "subtopic": "in_sample",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "module_5",
+      "question": "In-sample performance is a reliable indicator of future strategy returns.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "In-sample performance includes overfitting to past data. Only out-of-sample (unseen) performance gives reliable estimates. And even OOS can be compromised by data snooping if you tested many strategies on the same data.",
+      "tags": [
+        "in_sample",
+        "out_of_sample",
+        "overfitting"
+      ]
+    },
+    {
+      "id": "strategies_013",
+      "topic": "strategies",
+      "subtopic": "cost_drag",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_5",
+      "question": "If a strategy earns 50bps/month gross and has 100% monthly turnover with 10bps round-trip costs, the net monthly return is:",
+      "choices": [
+        "A) 50bps",
+        "B) 40bps",
+        "C) 30bps",
+        "D) 0bps"
+      ],
+      "correct": 1,
+      "explanation": "100% turnover × 10bps cost = 10bps drag. Net = 50 - 10 = 40bps/month. At higher turnover or worse execution, costs quickly eat into alpha.",
+      "tags": [
+        "transaction_costs",
+        "net_returns",
+        "cost_drag"
+      ]
+    },
+    {
+      "id": "strategies_014",
+      "topic": "strategies",
+      "subtopic": "momentum_vs_mean_reversion",
+      "difficulty": 2,
+      "type": "explain",
+      "source": "module_5",
+      "question": "Compare momentum and mean reversion strategies. When does each work best?",
+      "choices": null,
+      "correct": null,
+      "explanation": "Momentum works in trending markets (1-12 month horizon) — strong in equity sectors with persistent information flow. Crashes hard during reversals (2009). Mean reversion works in range-bound markets (short horizon, intraday to days) — pairs trading, stat arb. Fails when structural breaks cause permanent divergence. Key: they're natural complements — when one struggles, the other often thrives.",
+      "rubric": "Should contrast time horizons, market conditions, risk profiles, and note they can complement each other.",
+      "tags": [
+        "momentum",
+        "mean_reversion",
+        "comparison"
+      ]
+    },
+    {
+      "id": "strategies_015",
+      "topic": "strategies",
+      "subtopic": "survivorship_bias",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "module_5",
+      "question": "Survivorship bias makes backtests look:",
+      "choices": [
+        "A) Worse than reality",
+        "B) Better than reality",
+        "C) The same as reality",
+        "D) Unpredictable"
+      ],
+      "correct": 1,
+      "explanation": "Survivorship bias excludes delisted/bankrupt stocks from historical data. Since only survivors remain, the data looks better than what a real trader would have experienced (some of those stocks you bought would have gone to zero).",
+      "tags": [
+        "survivorship_bias",
+        "backtesting"
+      ]
+    },
+    {
+      "id": "strategies_016",
+      "topic": "strategies",
+      "subtopic": "signal_decay",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_5",
+      "question": "Alpha decay refers to:",
+      "choices": [
+        "A) Radioactive decay of financial instruments",
+        "B) The gradual loss of a signal's predictive power over time",
+        "C) Portfolio value declining",
+        "D) Interest rates falling"
+      ],
+      "correct": 1,
+      "explanation": "Signals lose predictive power as more capital exploits them, as market regimes change, or as the information gets priced in. Strategies must be refreshed or adapted.",
+      "tags": [
+        "alpha_decay",
+        "signal"
+      ]
+    },
+    {
+      "id": "strategies_017",
+      "topic": "strategies",
+      "subtopic": "high_sharpe",
+      "difficulty": 3,
+      "type": "true_false",
+      "source": "module_5",
+      "question": "A backtest showing a Sharpe ratio above 3.0 is very likely overfitted.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 1,
+      "explanation": "Sharpe > 3 in a multi-year backtest is suspicious. Very few live strategies sustain this. It usually indicates: overfitting, unrealistic assumptions (no costs, perfect fills), data snooping, or a very short test period.",
+      "tags": [
+        "sharpe",
+        "overfitting",
+        "skepticism"
+      ]
+    },
+    {
+      "id": "strategies_018",
+      "topic": "strategies",
+      "subtopic": "position_sizing",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_5",
+      "question": "Equal-volatility position sizing means:",
+      "choices": [
+        "A) Equal dollar amounts in each stock",
+        "B) Each position contributes equal volatility to the portfolio",
+        "C) Each stock has the same number of shares",
+        "D) Higher-vol stocks get larger positions"
+      ],
+      "correct": 1,
+      "explanation": "Size inversely proportional to vol: weight_i ∝ 1/vol_i. A 10% vol stock gets 2x the weight of a 20% vol stock. This prevents high-vol positions from dominating portfolio risk.",
+      "tags": [
+        "position_sizing",
+        "equal_vol",
+        "risk_management"
+      ]
+    },
+    {
+      "id": "strategies_019",
+      "topic": "strategies",
+      "subtopic": "strategy_evaluation",
+      "difficulty": 3,
+      "type": "explain",
+      "source": "module_5",
+      "question": "You've backtested a momentum strategy with Sharpe 1.2, max drawdown -18%, and turnover 400%. Evaluate whether this is worth trading live.",
+      "choices": null,
+      "correct": null,
+      "explanation": "Sharpe 1.2 is solid but turnover of 400% is very high. At 10bps per trade, cost drag = 400% × 10bps = 40bps/month = 4.8%/year. If annual gross return is ~15% (from Sharpe 1.2 × ~12% vol), costs eat ~30% of it. Net Sharpe drops to ~0.8. The -18% drawdown is reasonable. Verdict: potentially viable but must optimize execution to reduce turnover or negotiate lower trading costs. Also verify out-of-sample.",
+      "rubric": "Should calculate cost drag from turnover, compute net Sharpe, consider drawdown, and give a practical recommendation.",
+      "tags": [
+        "evaluation",
+        "turnover",
+        "costs",
+        "net_sharpe"
+      ]
+    },
+    {
+      "id": "strategies_020",
+      "topic": "strategies",
+      "subtopic": "regime_dependence",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "module_5",
+      "question": "The most dangerous scenario for a momentum strategy is:",
+      "choices": [
+        "A) A steadily rising market",
+        "B) A sudden market reversal after a prolonged trend",
+        "C) A flat market",
+        "D) A gradually declining market"
+      ],
+      "correct": 1,
+      "explanation": "Momentum's tail risk: after a prolonged trend, the portfolio is heavily long winners / short losers. A sudden reversal (like March 2009) means winners crash and losers spike — both legs lose simultaneously.",
+      "tags": [
+        "momentum",
+        "regime",
+        "reversal",
+        "tail_risk"
+      ]
+    },
+    {
+      "id": "alpha_sizing_001",
+      "topic": "alpha_sizing",
+      "subtopic": "proportional",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "paleologo_ch6",
+      "question": "In proportional alpha sizing, position size (NMV) is:",
+      "choices": [
+        "A) NMV = kappa * alpha / sigma²",
+        "B) NMV = kappa * alpha",
+        "C) NMV = kappa / alpha",
+        "D) NMV = kappa * sigma"
+      ],
+      "correct": 1,
+      "explanation": "Simplest sizing rule: position size is directly proportional to your alpha estimate. Scale kappa to hit your target GMV or vol.",
+      "tags": [
+        "proportional",
+        "sizing",
+        "nmv"
+      ]
+    },
+    {
+      "id": "alpha_sizing_002",
+      "topic": "alpha_sizing",
+      "subtopic": "mv_vs_proportional",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch6",
+      "question": "Paleologo's simulations show that proportional sizing beats mean-variance sizing because:",
+      "choices": [
+        "A) MV is harder to code",
+        "B) MV amplifies alpha estimation errors on low-vol stocks",
+        "C) Proportional uses more data",
+        "D) MV ignores correlations"
+      ],
+      "correct": 1,
+      "explanation": "MV sizes ∝ alpha/sigma². Low-vol stocks get huge positions. When alpha is wrong on a low-vol stock (which it often is), MV amplifies the mistake. The interaction of alpha error × vol dispersion is the killer.",
+      "tags": [
+        "mean_variance",
+        "proportional",
+        "alpha_error",
+        "volatility_dispersion"
+      ]
+    },
+    {
+      "id": "alpha_sizing_003",
+      "topic": "alpha_sizing",
+      "subtopic": "sharpe_ratio_def",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "paleologo_ch6",
+      "question": "In practice, Sharpe ratio is computed using:",
+      "choices": [
+        "A) Gross returns minus inflation",
+        "B) Raw returns (not excess of risk-free rate)",
+        "C) Only positive returns",
+        "D) Log returns only"
+      ],
+      "correct": 1,
+      "explanation": "Practitioners typically use raw returns for Sharpe, not excess of risk-free. The Information Ratio uses residual (idio) returns specifically.",
+      "tags": [
+        "sharpe",
+        "practitioner",
+        "definition"
+      ]
+    },
+    {
+      "id": "alpha_sizing_004",
+      "topic": "alpha_sizing",
+      "subtopic": "ir_vs_sr",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch6",
+      "question": "The Information Ratio differs from Sharpe Ratio in that IR uses:",
+      "choices": [
+        "A) Gross returns",
+        "B) Idiosyncratic (residual) returns only",
+        "C) Monthly instead of daily data",
+        "D) Geometric instead of arithmetic returns"
+      ],
+      "correct": 1,
+      "explanation": "IR = SR computed on residual returns after stripping out factor exposures. It measures pure stock-picking skill, isolated from market/factor bets.",
+      "tags": [
+        "information_ratio",
+        "sharpe",
+        "residual_returns"
+      ]
+    },
+    {
+      "id": "alpha_sizing_005",
+      "topic": "alpha_sizing",
+      "subtopic": "daily_to_annual_sr",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "paleologo_ch6",
+      "question": "To convert daily Sharpe to annual Sharpe:",
+      "choices": [
+        "A) Multiply by 252",
+        "B) Multiply by sqrt(252)",
+        "C) Divide by sqrt(252)",
+        "D) Divide by 252"
+      ],
+      "correct": 1,
+      "explanation": "SR_annual = sqrt(252) × SR_daily. Because SR = mean/vol, and mean scales by 252 while vol scales by sqrt(252), the ratio scales by sqrt(252).",
+      "tags": [
+        "sharpe",
+        "annualization",
+        "conversion"
+      ]
+    },
+    {
+      "id": "alpha_sizing_006",
+      "topic": "alpha_sizing",
+      "subtopic": "alpha_estimation",
+      "difficulty": 2,
+      "type": "explain",
+      "source": "paleologo_ch6",
+      "question": "Your analyst forecasts stock X will go from $53 to $74 over 6 months. The sector is expected to return 15% over the same period. What is the annualized idiosyncratic alpha?",
+      "choices": null,
+      "correct": null,
+      "explanation": "Total return = (74-53)/53 = 39.6%. Strip sector: idio return = 39.6% - 15% = 24.6%. Annualize over 6 months: alpha = 24.6% / 0.5 = 49.2% annualized. Key steps: (1) total return, (2) subtract sector/industry expected return, (3) annualize by dividing by horizon in years.",
+      "rubric": "Should show: total return calculation, sector stripping, annualization. Getting the exact number right matters less than the process.",
+      "tags": [
+        "alpha",
+        "estimation",
+        "idiosyncratic",
+        "annualization"
+      ]
+    },
+    {
+      "id": "alpha_sizing_007",
+      "topic": "alpha_sizing",
+      "subtopic": "risk_parity_sizing",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch6",
+      "question": "In risk parity sizing, NMV = kappa * alpha / sigma. This means:",
+      "choices": [
+        "A) Higher-vol stocks always get larger positions",
+        "B) Two stocks with equal alpha but different vol get different position sizes",
+        "C) Volatility doesn't matter",
+        "D) Alpha doesn't matter"
+      ],
+      "correct": 1,
+      "explanation": "Risk parity sizing normalizes by vol: a stock with 40% vol gets half the position of a stock with 20% vol (for equal alpha). This prevents high-vol names from dominating risk.",
+      "tags": [
+        "risk_parity",
+        "sizing",
+        "volatility_normalization"
+      ]
+    },
+    {
+      "id": "alpha_sizing_008",
+      "topic": "alpha_sizing",
+      "subtopic": "mv_historical",
+      "difficulty": 3,
+      "type": "true_false",
+      "source": "paleologo_ch6",
+      "question": "Using realized (perfect foresight) volatilities instead of estimated ones significantly improves mean-variance sizing performance.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "Paleologo's simulation shows using realized vol barely helps MV. The problem is alpha estimation error, not vol estimation error. Even with perfect vol, MV still amplifies alpha mistakes on low-vol stocks.",
+      "tags": [
+        "mean_variance",
+        "realized_vol",
+        "alpha_error"
+      ]
+    },
+    {
+      "id": "alpha_sizing_009",
+      "topic": "alpha_sizing",
+      "subtopic": "simulation_results",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch6",
+      "question": "In Paleologo's Russell 3000 simulation (1998-2019), proportional sizing achieved a Sharpe of 1.61. Mean-variance achieved approximately:",
+      "choices": [
+        "A) 2.0",
+        "B) 1.61",
+        "C) 1.07",
+        "D) 0.50"
+      ],
+      "correct": 2,
+      "explanation": "MV achieved Sharpe 1.07 — a 34% loss vs proportional's 1.61. Risk parity was in between at 1.46. Simpler sizing beats more sophisticated approaches when alpha is noisy.",
+      "tags": [
+        "simulation",
+        "sharpe",
+        "comparison",
+        "proportional_vs_mv"
+      ]
+    },
+    {
+      "id": "alpha_sizing_010",
+      "topic": "alpha_sizing",
+      "subtopic": "factor_neutral",
+      "difficulty": 3,
+      "type": "multiple_choice",
+      "source": "paleologo_ch6",
+      "question": "To make your alpha vector factor-neutral, you:",
+      "choices": [
+        "A) Set all alphas to zero",
+        "B) Regress alpha on factor loadings and use the residual",
+        "C) Multiply by beta",
+        "D) Divide by the number of factors"
+      ],
+      "correct": 1,
+      "explanation": "Regress alpha vector against the loadings matrix B: alpha = Bx + epsilon. The residual epsilon is your factor-neutral alpha — the part not explained by factor tilts. Use epsilon for sizing.",
+      "tags": [
+        "factor_neutral",
+        "regression",
+        "residual_alpha"
+      ]
+    },
+    {
+      "id": "alpha_sizing_011",
+      "topic": "alpha_sizing",
+      "subtopic": "alpha_requirements",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "paleologo_ch6",
+      "question": "Alpha estimates should include the expected industry/sector return over the investment horizon.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "Alpha should be IDIOSYNCRATIC — you must strip out expected industry returns. If your stock forecast includes 15% sector tailwind, that's not alpha. Alpha = total expected return minus expected factor returns.",
+      "tags": [
+        "alpha",
+        "idiosyncratic",
+        "sector_stripping"
+      ]
+    },
+    {
+      "id": "alpha_sizing_012",
+      "topic": "alpha_sizing",
+      "subtopic": "sizing_comparison",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch6",
+      "question": "Rank the sizing rules from best to worst Sharpe (per Paleologo's simulations):",
+      "choices": [
+        "A) MV > Risk Parity > Proportional",
+        "B) Proportional > Risk Parity > MV",
+        "C) Risk Parity > Proportional > MV",
+        "D) All equal"
+      ],
+      "correct": 1,
+      "explanation": "Proportional (1.61) > Risk Parity (1.46) > MV (1.07). The simpler the sizing, the better — because simplicity is more robust to alpha estimation error.",
+      "tags": [
+        "sizing_comparison",
+        "ranking",
+        "robustness"
+      ]
+    },
+    {
+      "id": "alpha_sizing_013",
+      "topic": "alpha_sizing",
+      "subtopic": "practical_sizing",
+      "difficulty": 3,
+      "type": "explain",
+      "source": "paleologo_ch6",
+      "question": "Walk through how you would convert 5 analyst stock picks into a factor-neutral portfolio. Include the key steps.",
+      "choices": null,
+      "correct": null,
+      "explanation": "1) Set horizon T and get price targets → compute total expected returns. 2) Subtract expected industry returns → idiosyncratic alpha for each stock. 3) Annualize: alpha_annual = alpha_idio / T. 4) Apply proportional sizing: NMV_i = kappa × alpha_i. 5) Regress alphas on factor loadings (B matrix) → get residual alphas. 6) Standardize: a_i = epsilon_i / sum(|epsilon|). 7) Set NMV_i = a_i × target_GMV. Now the portfolio is factor-neutral with sizes proportional to conviction.",
+      "rubric": "Should cover: return estimation, sector stripping, annualization, sizing rule, factor neutralization. Getting the full pipeline right is impressive.",
+      "tags": [
+        "practical",
+        "portfolio_construction",
+        "factor_neutral",
+        "pipeline"
+      ]
+    },
+    {
+      "id": "alpha_sizing_014",
+      "topic": "alpha_sizing",
+      "subtopic": "sr_from_leverage",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch6",
+      "question": "If a strategy has high SR but low vol/GMV, the correct response is:",
+      "choices": [
+        "A) Abandon the strategy",
+        "B) Lever up to increase dollar PnL while maintaining the same SR",
+        "C) Add more stocks",
+        "D) Increase the risk-free rate"
+      ],
+      "correct": 1,
+      "explanation": "SR measures return per unit of risk, not per unit of capital. If SR is high, you can lever up (increase GMV) to generate more dollar PnL. The Sharpe ratio is preserved under leverage (before costs).",
+      "tags": [
+        "sharpe",
+        "leverage",
+        "dollar_pnl"
+      ]
+    },
+    {
+      "id": "alpha_sizing_015",
+      "topic": "alpha_sizing",
+      "subtopic": "kappa_calibration",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch6",
+      "question": "The scaling parameter kappa in NMV = kappa * alpha is calibrated to:",
+      "choices": [
+        "A) Maximize returns",
+        "B) Hit a target GMV or target portfolio volatility",
+        "C) Minimize transaction costs",
+        "D) Equal the risk-free rate"
+      ],
+      "correct": 1,
+      "explanation": "Kappa is a scaling factor — it doesn't affect relative sizing, just the overall level. You choose kappa so total portfolio GMV or total vol matches your mandate/target.",
+      "tags": [
+        "kappa",
+        "calibration",
+        "gmv",
+        "volatility_target"
+      ]
+    },
+    {
+      "id": "alpha_sizing_016",
+      "topic": "alpha_sizing",
+      "subtopic": "buy_sell_signals",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "paleologo_ch6",
+      "question": "Proportional sizing works well even with crude buy/sell/hold signals (not continuous alpha estimates).",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 1,
+      "explanation": "Paleologo's simulations show proportional sizing achieves Sharpe 1.29 even with simple buy/sell signals (vs 1.61 with Gaussian). The edge of simpler sizing rules holds even with crude alpha inputs.",
+      "tags": [
+        "proportional",
+        "buy_sell",
+        "robustness"
+      ]
+    },
+    {
+      "id": "alpha_sizing_017",
+      "topic": "alpha_sizing",
+      "subtopic": "vol_dispersion",
+      "difficulty": 3,
+      "type": "multiple_choice",
+      "source": "paleologo_ch6",
+      "question": "The key interaction that makes MV sizing fail is:",
+      "choices": [
+        "A) High market volatility",
+        "B) Alpha estimation error combined with cross-sectional volatility dispersion",
+        "C) Too many stocks",
+        "D) Low correlations"
+      ],
+      "correct": 1,
+      "explanation": "MV amplifies positions on low-vol stocks (∝ alpha/sigma²). When alpha estimates are wrong (they always are), the amplification is worst for low-vol stocks. With dispersed vols (some 10%, some 40%), this creates a 3.3x misallocation penalty vs uniform-vol case.",
+      "tags": [
+        "mean_variance",
+        "vol_dispersion",
+        "alpha_error",
+        "interaction"
+      ]
+    },
+    {
+      "id": "alpha_sizing_018",
+      "topic": "alpha_sizing",
+      "subtopic": "renaissance",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "paleologo_ch6",
+      "question": "Renaissance Technologies went from Sharpe ~2 to Sharpe ~6 primarily by improving:",
+      "choices": [
+        "A) Alpha signals",
+        "B) Portfolio construction and sizing",
+        "C) Hardware speed",
+        "D) Fee structure"
+      ],
+      "correct": 1,
+      "explanation": "RenTech's alpha signals were good early on, but their Sharpe multiplied 3x when they nailed portfolio construction. Sizing and risk management amplify whatever alpha you have.",
+      "tags": [
+        "renaissance",
+        "portfolio_construction",
+        "sharpe"
+      ]
+    },
+    {
+      "id": "factor_risk_001",
+      "topic": "factor_risk",
+      "subtopic": "pct_idio_var",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "paleologo_ch7",
+      "question": "The %idio variance of a portfolio measures:",
+      "choices": [
+        "A) Total portfolio volatility",
+        "B) What fraction of total variance comes from stock-specific risk vs factor risk",
+        "C) The number of unique stocks",
+        "D) Portfolio beta"
+      ],
+      "correct": 1,
+      "explanation": "%Idio var = Var(idio)/Var(total). High %idio means most risk comes from stock picks (alpha bets), not from factor exposure. Fundamental PMs want this to be high.",
+      "tags": [
+        "idio_variance",
+        "risk_decomposition"
+      ]
+    },
+    {
+      "id": "factor_risk_002",
+      "topic": "factor_risk",
+      "subtopic": "sr_ir_relationship",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch7",
+      "question": "The relationship between Sharpe Ratio and Information Ratio is:",
+      "choices": [
+        "A) SR = IR always",
+        "B) SR = IR × sqrt(%idio_var)",
+        "C) SR = IR / beta",
+        "D) SR = IR + factor returns"
+      ],
+      "correct": 1,
+      "explanation": "SR = IR × sqrt(%idio_var). Every 5-point drop in %idio var costs ~2.5% of IR. Below 75% idio var, you're giving up too much alpha-per-risk to factor noise.",
+      "tags": [
+        "sharpe",
+        "information_ratio",
+        "idio_variance"
+      ]
+    },
+    {
+      "id": "factor_risk_003",
+      "topic": "factor_risk",
+      "subtopic": "idio_var_limit",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch7",
+      "question": "Paleologo recommends %idio variance should not drop below:",
+      "choices": [
+        "A) 50%",
+        "B) 75%",
+        "C) 90%",
+        "D) 100%"
+      ],
+      "correct": 1,
+      "explanation": "Below 75%, factor risk erodes too much of your IR. Below 70% is almost never acceptable. But 100% has costs too — transaction costs from constant neutralization and cognitive overhead.",
+      "tags": [
+        "idio_variance",
+        "limit",
+        "recommendation"
+      ]
+    },
+    {
+      "id": "factor_risk_004",
+      "topic": "factor_risk",
+      "subtopic": "risk_decomp_table",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch7",
+      "question": "In a risk decomposition table, MCFR stands for:",
+      "choices": [
+        "A) Maximum Cumulative Factor Return",
+        "B) Marginal Contribution to Factor Risk",
+        "C) Market Cap Factor Ratio",
+        "D) Minimum Capital for Risk"
+      ],
+      "correct": 1,
+      "explanation": "MCFR tells you: if I trade this stock, how much does it change the portfolio's total factor risk? Use it to identify which trades most efficiently reduce unwanted factor exposure.",
+      "tags": [
+        "mcfr",
+        "risk_decomposition",
+        "factor_risk"
+      ]
+    },
+    {
+      "id": "factor_risk_005",
+      "topic": "factor_risk",
+      "subtopic": "risk_decomp_process",
+      "difficulty": 2,
+      "type": "explain",
+      "source": "paleologo_ch7",
+      "question": "Walk through how a PM should use a risk decomposition table to manage a tech portfolio with too much momentum exposure.",
+      "choices": null,
+      "correct": null,
+      "explanation": "1) Run risk decomposition — identify momentum as contributing e.g. 5% of total variance. 2) Check %idio var — if it's below 75%, factor risk is too high. 3) Compute MCFR for each stock on momentum. 4) Identify stocks with high MCFR AND where reducing the position aligns with fundamental conviction. 5) Reduce those positions (don't fight your thesis). 6) Alternatively, add positions with negative momentum loading to offset. 7) Re-run decomposition to verify improvement.",
+      "rubric": "Should describe the diagnostic-to-action workflow, mention MCFR, and emphasize aligning trades with conviction.",
+      "tags": [
+        "risk_decomposition",
+        "momentum",
+        "mcfr",
+        "tactical"
+      ]
+    },
+    {
+      "id": "factor_risk_006",
+      "topic": "factor_risk",
+      "subtopic": "separation_of_concerns",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "paleologo_ch7",
+      "question": "The principle of 'separation of concerns' in portfolio management means:",
+      "choices": [
+        "A) Never owning stocks in the same sector",
+        "B) Isolating idiosyncratic PnL from factor PnL for clear diagnosis",
+        "C) Separating long and short books",
+        "D) Having different analysts per sector"
+      ],
+      "correct": 1,
+      "explanation": "Separation of concerns: keep factor PnL separate from idio PnL so you can diagnose each independently. If total PnL is up, was it your stock picks or just the market rally? You need to know.",
+      "tags": [
+        "separation_of_concerns",
+        "pnl_attribution"
+      ]
+    },
+    {
+      "id": "factor_risk_007",
+      "topic": "factor_risk",
+      "subtopic": "optimal_market_alloc",
+      "difficulty": 3,
+      "type": "multiple_choice",
+      "source": "paleologo_ch7",
+      "question": "If your portfolio SR is 2.0 and the market SR is 0.5, the optimal market variance allocation is approximately:",
+      "choices": [
+        "A) 50%",
+        "B) 25%",
+        "C) 6%",
+        "D) 0%"
+      ],
+      "correct": 2,
+      "explanation": "market_var/total_var = 1/(1+(SR_port/SR_market)²) = 1/(1+16) = 5.9% ≈ 6%. When your alpha is strong relative to the market, you should be nearly market-neutral.",
+      "tags": [
+        "market_allocation",
+        "optimal",
+        "market_neutral"
+      ]
+    },
+    {
+      "id": "factor_risk_008",
+      "topic": "factor_risk",
+      "subtopic": "factor_edge",
+      "difficulty": 1,
+      "type": "true_false",
+      "source": "paleologo_ch7",
+      "question": "Fundamental PMs generally have an edge in factor investing.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "Paleologo's first principle: you have NO edge in factor investing. Specialized quant players barely break even on factors. Fundamental PMs should focus on stock-specific alpha and neutralize factor exposure.",
+      "tags": [
+        "factor_investing",
+        "no_edge",
+        "fundamental_pm"
+      ]
+    },
+    {
+      "id": "factor_risk_009",
+      "topic": "factor_risk",
+      "subtopic": "single_position_limit",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch7",
+      "question": "Maximum single-position GMV should increase with:",
+      "choices": [
+        "A) Portfolio breadth",
+        "B) Market volatility",
+        "C) Conviction skill (alpha accuracy)",
+        "D) Number of factors"
+      ],
+      "correct": 2,
+      "explanation": "Higher conviction skill → more concentrated positions justified. Lower skill → spread bets wider. Position limits also decrease with broader portfolios (more names to allocate to).",
+      "tags": [
+        "position_limits",
+        "concentration",
+        "conviction"
+      ]
+    },
+    {
+      "id": "factor_risk_010",
+      "topic": "factor_risk",
+      "subtopic": "factor_exposure_limit",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch7",
+      "question": "If momentum can lose 10% in a bad month and you can tolerate $5M loss from any single factor, your max momentum exposure should be:",
+      "choices": [
+        "A) $5M",
+        "B) $10M",
+        "C) $50M",
+        "D) $500M"
+      ],
+      "correct": 2,
+      "explanation": "Max exposure = loss_tolerance / worst_case_factor_loss = $5M / 0.10 = $50M. This ties factor limits directly to dollar risk tolerance.",
+      "tags": [
+        "factor_limits",
+        "loss_tolerance",
+        "momentum"
+      ]
+    },
+    {
+      "id": "factor_risk_011",
+      "topic": "factor_risk",
+      "subtopic": "strategic_vs_tactical",
+      "difficulty": 3,
+      "type": "explain",
+      "source": "paleologo_ch7",
+      "question": "Distinguish between tactical and strategic factor risk management. Give an example of each.",
+      "choices": null,
+      "correct": null,
+      "explanation": "Tactical: short-term, reactive. Example: momentum factor is spiking ahead of earnings — reduce momentum-loaded positions this week. Strategic: long-term policy. Example: set a standing rule that %idio variance must stay above 80% and no single factor can exceed $50M exposure. Tactical handles events; strategic sets the framework within which tactical operates.",
+      "rubric": "Should distinguish the two clearly with concrete examples. Bonus: mentioning that strategic limits inform tactical actions.",
+      "tags": [
+        "tactical",
+        "strategic",
+        "factor_risk",
+        "examples"
+      ]
+    },
+    {
+      "id": "factor_risk_012",
+      "topic": "factor_risk",
+      "subtopic": "hedging_program",
+      "difficulty": 3,
+      "type": "multiple_choice",
+      "source": "paleologo_ch7",
+      "question": "An automated hedging program adds stocks to the portfolio specifically to:",
+      "choices": [
+        "A) Increase returns",
+        "B) Zero out unwanted factor exposures",
+        "C) Reduce the number of positions",
+        "D) Increase portfolio beta"
+      ],
+      "correct": 1,
+      "explanation": "Hedging programs add 'hedge basket' stocks that offset factor exposures. Trade-off: more positions to manage, but factor risk stays controlled. Used by PMs who need high productivity without factor contamination.",
+      "tags": [
+        "hedging",
+        "hedge_basket",
+        "factor_neutral"
+      ]
+    },
+    {
+      "id": "factor_risk_013",
+      "topic": "factor_risk",
+      "subtopic": "cost_of_100_idio",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch7",
+      "question": "Maintaining exactly 100% idio variance has costs including:",
+      "choices": [
+        "A) Only transaction costs",
+        "B) Transaction costs, cognitive overhead, and potential distortion of sizing",
+        "C) No costs — it's always optimal",
+        "D) Only tracking error costs"
+      ],
+      "correct": 1,
+      "explanation": "100% idio = constant neutralization. This adds: (1) transaction costs from adjusting trades, (2) cognitive burden of continuous monitoring, (3) may distort sizing decisions. Sometimes 85-90% is the pragmatic sweet spot.",
+      "tags": [
+        "idio_variance",
+        "costs",
+        "pragmatic"
+      ]
+    },
+    {
+      "id": "factor_risk_014",
+      "topic": "factor_risk",
+      "subtopic": "risk_model_error",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch7",
+      "question": "Risk models from different vendors (Barra, Axioma) can disagree on %idio var by:",
+      "choices": [
+        "A) Less than 1%",
+        "B) 5-10 percentage points",
+        "C) 50 percentage points",
+        "D) They always agree"
+      ],
+      "correct": 1,
+      "explanation": "Risk models are estimates, not facts. Different vendors use different factor definitions, estimation windows, and methodologies. %Idio var can differ by 5-10 points across vendors. Use one consistently, but know its limitations.",
+      "tags": [
+        "risk_model",
+        "vendor_disagreement",
+        "estimation"
+      ]
+    },
+    {
+      "id": "factor_risk_015",
+      "topic": "factor_risk",
+      "subtopic": "optimization_timing",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "paleologo_ch7",
+      "question": "Factor risk optimization is most valuable during factor rotation events or when alpha is strong.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 1,
+      "explanation": "When alpha is strong, positions naturally accumulate momentum/beta exposure. During factor rotations (momentum crashes, short squeezes), automated optimization can rapidly reduce exposure. Routine periods need less intervention.",
+      "tags": [
+        "optimization",
+        "factor_rotation",
+        "timing"
+      ]
+    },
+    {
+      "id": "factor_risk_016",
+      "topic": "factor_risk",
+      "subtopic": "fiduciary_duty",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "paleologo_ch7",
+      "question": "Managing factor risk is important because:",
+      "choices": [
+        "A) It always increases returns",
+        "B) Investors aren't paying for factor exposure they can get from index funds",
+        "C) Factor exposure is always negative",
+        "D) Regulators require it"
+      ],
+      "correct": 1,
+      "explanation": "Fiduciary duty: LPs pay management fees for alpha, not beta. If 50% of your returns come from market exposure, they could get that from a Vanguard ETF at 5bps. You must deliver idiosyncratic value.",
+      "tags": [
+        "fiduciary_duty",
+        "alpha",
+        "factor_exposure"
+      ]
+    },
+    {
+      "id": "factor_risk_017",
+      "topic": "factor_risk",
+      "subtopic": "narrow_portfolio",
+      "difficulty": 3,
+      "type": "multiple_choice",
+      "source": "paleologo_ch7",
+      "question": "A narrow portfolio (<50 stocks) with mediocre SR should have:",
+      "choices": [
+        "A) Zero market exposure",
+        "B) Significant market beta exposure",
+        "C) Maximum leverage",
+        "D) Only one factor loading"
+      ],
+      "correct": 1,
+      "explanation": "optimal_market_var = 1/(1+(SR_port/SR_market)²). With low SR_port ≈ SR_market: ~50% market var. Narrow portfolios with mediocre alpha benefit from market beta because it diversifies their concentrated idio risk.",
+      "tags": [
+        "narrow_portfolio",
+        "market_exposure",
+        "optimal_allocation"
+      ]
+    },
+    {
+      "id": "factor_risk_018",
+      "topic": "factor_risk",
+      "subtopic": "per_stock_action",
+      "difficulty": 2,
+      "type": "explain",
+      "source": "paleologo_ch7",
+      "question": "For each stock in your portfolio, describe the process for deciding whether to trade it for factor risk reduction.",
+      "choices": null,
+      "correct": null,
+      "explanation": "For each stock, check: 1) MCFR — how much does trading this stock reduce factor risk? High MCFR = impactful. 2) Factor loading — what's the stock's exposure to the problematic factor? 3) Fundamental conviction — does reducing/increasing this position conflict with your thesis? Only trade if the factor risk reduction aligns with or doesn't contradict your conviction. Never sacrifice a high-conviction alpha bet just for factor cleanliness.",
+      "rubric": "Should mention MCFR, factor loading, and fundamental conviction alignment. Key insight: don't sacrifice alpha for factor cleanliness.",
+      "tags": [
+        "mcfr",
+        "per_stock",
+        "conviction",
+        "trade_decision"
+      ]
+    },
+    {
+      "id": "factor_risk_019",
+      "topic": "factor_risk",
+      "subtopic": "performance_cost",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch7",
+      "question": "Every 5-point drop in %idio variance costs approximately:",
+      "choices": [
+        "A) 0.5% of IR",
+        "B) 2.5% of IR",
+        "C) 10% of IR",
+        "D) 25% of IR"
+      ],
+      "correct": 1,
+      "explanation": "From SR = IR × sqrt(%idio_var): going from 95% to 90% idio var costs ~2.5% IR. From 80% to 75% costs ~2.8%. The cost accelerates as %idio drops — the marginal cost of factor leakage increases.",
+      "tags": [
+        "idio_variance",
+        "ir_cost",
+        "marginal"
+      ]
+    },
+    {
+      "id": "factor_risk_020",
+      "topic": "factor_risk",
+      "subtopic": "dollar_vol",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "paleologo_ch7",
+      "question": "$Vol from a factor is computed as:",
+      "choices": [
+        "A) Dollar exposure × factor volatility",
+        "B) Dollar exposure × factor return",
+        "C) Dollar exposure / factor volatility",
+        "D) Number of stocks × factor weight"
+      ],
+      "correct": 0,
+      "explanation": "$Vol = exposure × factor vol. If you have $100M exposure to momentum and momentum factor vol is 15% annualized, your dollar vol from momentum ≈ $15M annually.",
+      "tags": [
+        "dollar_vol",
+        "factor_vol",
+        "exposure"
+      ]
+    },
+    {
+      "id": "factor_risk_021",
+      "topic": "factor_risk",
+      "subtopic": "style_vs_industry",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "paleologo_ch7",
+      "question": "For a typical tech portfolio, industry factor risk usually exceeds style factor risk.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "It depends on the portfolio. Paleologo's example shows style factors (dominated by momentum at 5.05%) contributing 7.6% of total var vs industry at 7.4%. The split varies, but PMs should check both.",
+      "tags": [
+        "style_factors",
+        "industry_factors",
+        "risk_split"
+      ]
+    },
+    {
+      "id": "factor_risk_022",
+      "topic": "factor_risk",
+      "subtopic": "when_to_optimize",
+      "difficulty": 3,
+      "type": "multiple_choice",
+      "source": "paleologo_ch7",
+      "question": "Factor risk optimization should be triggered by all of the following EXCEPT:",
+      "choices": [
+        "A) Momentum crash in progress",
+        "B) Earnings season creating temporary factor spikes",
+        "C) Routine monthly rebalancing with no factor issues",
+        "D) Short squeeze on heavily shorted positions"
+      ],
+      "correct": 2,
+      "explanation": "Optimization is most valuable during dislocations: factor rotations, alpha-driven factor drift, earnings volatility, short squeezes. Routine rebalancing with no factor issues doesn't need optimization — simpler rules suffice.",
+      "tags": [
+        "optimization",
+        "triggers",
+        "when_to_use"
+      ]
+    },
+    {
+      "id": "risk_mgmt_001",
+      "topic": "risk_mgmt",
+      "subtopic": "stop_loss",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "paleologo_ch9",
+      "question": "A stop-loss threshold on a PM's book is typically measured from:",
+      "choices": [
+        "A) The initial investment date",
+        "B) The portfolio's high watermark",
+        "C) The start of each calendar year",
+        "D) The risk-free rate"
+      ],
+      "correct": 1,
+      "explanation": "Stop-loss measures drawdown from the high watermark (peak portfolio value). When the portfolio drops X% from its peak, the stop triggers.",
+      "tags": [
+        "stop_loss",
+        "high_watermark",
+        "drawdown"
+      ]
+    },
+    {
+      "id": "risk_mgmt_002",
+      "topic": "risk_mgmt",
+      "subtopic": "two_threshold",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch9",
+      "question": "A two-threshold stop-loss rule works by:",
+      "choices": [
+        "A) Having two separate portfolios",
+        "B) Cutting GMV by 50% at the first threshold, liquidating fully at the second",
+        "C) Stopping and restarting twice",
+        "D) Using two different time periods"
+      ],
+      "correct": 1,
+      "explanation": "Two-threshold: cut position size 50% at X/2 loss, fully liquidate at X loss. It encourages discipline and approximates the optimal Grossman-Zhou policy. Results are nearly identical to single-threshold.",
+      "tags": [
+        "two_threshold",
+        "stop_loss",
+        "grossman_zhou"
+      ]
+    },
+    {
+      "id": "risk_mgmt_003",
+      "topic": "risk_mgmt",
+      "subtopic": "pm_call_option",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch9",
+      "question": "Stop-loss offsets the PM's 'call option' problem because:",
+      "choices": [
+        "A) PMs trade options",
+        "B) PM compensation resembles a call option — higher vol increases its value, creating an incentive for excessive risk",
+        "C) PMs can only make money if the market goes up",
+        "D) Options expire worthless"
+      ],
+      "correct": 1,
+      "explanation": "PM pay = base + performance bonus. The bonus has convex payoff (upside participation, no downside clawback) — like a call option. Higher vol = higher option value → PM incentive to take too much risk. Stop-loss caps downside, reducing this misalignment.",
+      "tags": [
+        "call_option",
+        "pm_incentives",
+        "moral_hazard"
+      ]
+    },
+    {
+      "id": "risk_mgmt_004",
+      "topic": "risk_mgmt",
+      "subtopic": "stop_loss_efficiency",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch9",
+      "question": "A PM with SR=1 and stop-loss at 1.4× vol retains approximately what % of their SR?",
+      "choices": [
+        "A) 100%",
+        "B) 93%",
+        "C) 75%",
+        "D) 50%"
+      ],
+      "correct": 2,
+      "explanation": "From Paleologo's efficiency table: SR=1.0, loss/vol=1.4 → 75% efficiency. The PM loses 25% of their Sharpe to the stop-loss constraint. Higher-SR PMs are barely affected.",
+      "tags": [
+        "stop_loss",
+        "efficiency",
+        "sharpe"
+      ]
+    },
+    {
+      "id": "risk_mgmt_005",
+      "topic": "risk_mgmt",
+      "subtopic": "stop_loss_cost",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "paleologo_ch9",
+      "question": "Stop-loss costs are primarily from transaction costs of liquidation.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 0,
+      "explanation": "Transaction costs add ~5% extra turnover (modest). The bigger cost is OPPORTUNITY COST — by cutting capital during a drawdown, you miss the recovery. If alpha is mean-reverting, stop-loss actively hurts.",
+      "tags": [
+        "stop_loss",
+        "opportunity_cost",
+        "transaction_costs"
+      ]
+    },
+    {
+      "id": "risk_mgmt_006",
+      "topic": "risk_mgmt",
+      "subtopic": "leverage",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "paleologo_ch10",
+      "question": "Leverage ratio is defined as:",
+      "choices": [
+        "A) Returns / risk",
+        "B) GMV / AUM",
+        "C) Long book / short book",
+        "D) Net exposure / gross exposure"
+      ],
+      "correct": 1,
+      "explanation": "Leverage = GMV (total long + total short in absolute terms) / AUM (capital). A $200M GMV portfolio with $100M AUM has 2x leverage.",
+      "tags": [
+        "leverage",
+        "gmv",
+        "aum"
+      ]
+    },
+    {
+      "id": "risk_mgmt_007",
+      "topic": "risk_mgmt",
+      "subtopic": "breadth_leverage",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch10",
+      "question": "Portfolio vol/GMV = sigma/sqrt(n). This means broader portfolios (more stocks) can:",
+      "choices": [
+        "A) Tolerate less leverage",
+        "B) Support more leverage at the same risk level",
+        "C) Ignore stop-loss rules",
+        "D) Eliminate all risk"
+      ],
+      "correct": 1,
+      "explanation": "More stocks → lower vol per dollar of GMV → room for more leverage to generate the same dollar PnL. Breadth is a lever for leverage capacity.",
+      "tags": [
+        "breadth",
+        "leverage",
+        "diversification"
+      ]
+    },
+    {
+      "id": "risk_mgmt_008",
+      "topic": "risk_mgmt",
+      "subtopic": "stop_loss_design",
+      "difficulty": 3,
+      "type": "explain",
+      "source": "paleologo_ch9",
+      "question": "Design a stop-loss policy for a PM with SR=1.5 running a $500M book with 12% annual vol. State the threshold and justify it.",
+      "choices": null,
+      "correct": null,
+      "explanation": "At SR=1.5 and loss/vol=1.6, efficiency ≈ 93% — PM retains most of their Sharpe. Threshold = 1.6 × 12% = 19.2% from HWM. Two-threshold variant: cut 50% at -9.6%, fully liquidate at -19.2%. Dollar terms: first cut at ~$48M drawdown, full stop at ~$96M. This balances opportunity cost against tail risk. A tighter stop (1.2×) would cost ~12% of Sharpe — too much for a PM who is generating real alpha.",
+      "rubric": "Should pick a specific loss/vol ratio (1.4-2.0), compute the dollar threshold, justify the choice using the efficiency table.",
+      "tags": [
+        "stop_loss",
+        "policy_design",
+        "efficiency",
+        "threshold"
+      ]
+    },
+    {
+      "id": "risk_mgmt_009",
+      "topic": "risk_mgmt",
+      "subtopic": "high_sr_stop",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch9",
+      "question": "High-SR PMs can afford tighter stop-losses because:",
+      "choices": [
+        "A) They have more capital",
+        "B) Their alpha makes them less likely to trigger the stop",
+        "C) They don't need to trade",
+        "D) Regulators require it"
+      ],
+      "correct": 1,
+      "explanation": "High-SR PMs have a higher expected return cushion, making drawdowns to the stop level much less probable. A SR=2 PM at 1.4× vol stop retains 96% efficiency vs 58% for a SR=0.5 PM.",
+      "tags": [
+        "sharpe",
+        "stop_loss",
+        "high_sr"
+      ]
+    },
+    {
+      "id": "risk_mgmt_010",
+      "topic": "risk_mgmt",
+      "subtopic": "stop_restart",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch9",
+      "question": "Stop-and-restart differs from stop-and-shutdown in that:",
+      "choices": [
+        "A) No money is returned",
+        "B) The PM's performance continues to be monitored pro-forma, and the book is re-capitalized if it recovers",
+        "C) The PM is immediately fired",
+        "D) The book is doubled down"
+      ],
+      "correct": 1,
+      "explanation": "Stop-and-restart: liquidate, but track what would have happened. If pro-forma performance recovers past a hurdle, re-capitalize. This retains optionality on a PM whose drawdown was bad luck, not bad skill.",
+      "tags": [
+        "stop_restart",
+        "stop_shutdown",
+        "optionality"
+      ]
+    },
+    {
+      "id": "risk_mgmt_011",
+      "topic": "risk_mgmt",
+      "subtopic": "leverage_formula",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch10",
+      "question": "Expected PnL of a market-neutral portfolio equals:",
+      "choices": [
+        "A) AUM × return target",
+        "B) SR × sigma × GMV / sqrt(n)",
+        "C) GMV × market return",
+        "D) AUM / leverage"
+      ],
+      "correct": 1,
+      "explanation": "E[PnL] = SR × sigma_port = SR × sigma_stock × GMV / sqrt(n). Three levers to increase PnL: higher SR, more leverage (GMV), or higher single-stock vol (less common).",
+      "tags": [
+        "expected_pnl",
+        "leverage",
+        "formula"
+      ]
+    },
+    {
+      "id": "risk_mgmt_012",
+      "topic": "risk_mgmt",
+      "subtopic": "stop_loss_universal",
+      "difficulty": 1,
+      "type": "true_false",
+      "source": "paleologo_ch9",
+      "question": "Every fund has a stop-loss, even if they claim they don't.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 1,
+      "explanation": "Paleologo's point: even firms without formal stop-losses will cut a PM who's down 40%. The question is whether the rule is transparent and well-designed, or arbitrary and panic-driven. Transparent is always better.",
+      "tags": [
+        "stop_loss",
+        "universality"
+      ]
+    },
+    {
+      "id": "risk_mgmt_013",
+      "topic": "risk_mgmt",
+      "subtopic": "leverage_upper_bound",
+      "difficulty": 3,
+      "type": "multiple_choice",
+      "source": "paleologo_ch10",
+      "question": "The upper bound on leverage is determined by:",
+      "choices": [
+        "A) Return target only",
+        "B) Maximum acceptable loss and portfolio characteristics (breadth, stock vol)",
+        "C) The risk-free rate",
+        "D) Market capitalization"
+      ],
+      "correct": 1,
+      "explanation": "L_max = max_loss / (k × sigma / sqrt(n)). Leverage is bounded by loss tolerance, number of stocks, single-stock vol, and stop-loss threshold. All four interact.",
+      "tags": [
+        "leverage",
+        "upper_bound",
+        "loss_tolerance",
+        "breadth"
+      ]
+    },
+    {
+      "id": "risk_mgmt_014",
+      "topic": "risk_mgmt",
+      "subtopic": "leverage_decision",
+      "difficulty": 3,
+      "type": "explain",
+      "source": "paleologo_ch10",
+      "question": "A PM runs 70 stocks with 20% average idio vol and SR=1.0. If the target return is 15% on $100M AUM, what leverage is needed?",
+      "choices": null,
+      "correct": null,
+      "explanation": "Portfolio vol/GMV = 20%/sqrt(70) = 2.39%. E[return on AUM] = SR × vol/GMV × leverage = 1.0 × 2.39% × L. For 15% target: L = 15% / 2.39% ≈ 6.3x. GMV = 6.3 × $100M = $630M. Check: is this sustainable given stop-loss constraints? Max loss at 1.5× vol ≈ 1.5 × 2.39% × 6.3 ≈ 22.6% of AUM — this is within typical tolerances.",
+      "rubric": "Should compute vol/GMV, solve for leverage, compute dollar GMV, and check against stop-loss feasibility.",
+      "tags": [
+        "leverage",
+        "calculation",
+        "vol_gmv",
+        "target_return"
+      ]
+    },
+    {
+      "id": "risk_mgmt_015",
+      "topic": "risk_mgmt",
+      "subtopic": "stop_loss_vol_strategies",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "paleologo_ch9",
+      "question": "More volatile strategies should:",
+      "choices": [
+        "A) Have tighter stops measured in dollar terms",
+        "B) Reduce GMV earlier in a drawdown but retain more optionality",
+        "C) Never have stop-losses",
+        "D) Ignore drawdowns"
+      ],
+      "correct": 1,
+      "explanation": "Grossman-Zhou optimal policy: reduce GMV proportionally as drawdown increases. Higher-vol strategies reach intermediate thresholds faster, so they de-risk earlier, but this preserves the option to re-risk if alpha recovers.",
+      "tags": [
+        "volatility",
+        "stop_loss",
+        "grossman_zhou",
+        "dynamic"
+      ]
+    },
+    {
+      "id": "risk_mgmt_016",
+      "topic": "risk_mgmt",
+      "subtopic": "four_pm_firm",
+      "difficulty": 3,
+      "type": "multiple_choice",
+      "source": "paleologo_ch9",
+      "question": "A firm with 4 uncorrelated PMs each with SR=1 has a firm-level SR of 2.0. If each PM has a stop-loss at 1.5× vol (75% efficiency), the firm-level SR becomes:",
+      "choices": [
+        "A) 2.0",
+        "B) 1.5",
+        "C) 1.0",
+        "D) 0.75"
+      ],
+      "correct": 1,
+      "explanation": "Each PM's effective SR = 0.75 × 1.0 = 0.75. Firm SR = 0.75 × sqrt(4) = 1.5. Stop-loss costs compound across the firm — the firm lost 25% of its SR. This highlights the real cost of stop-losses at scale.",
+      "tags": [
+        "firm_level",
+        "stop_loss",
+        "diversification",
+        "compound_cost"
+      ]
+    },
+    {
+      "id": "projects_001",
+      "topic": "projects",
+      "subtopic": "oos_r2",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "kelly_ml",
+      "question": "Your Kelly ML project shows negative OOS R-squared. This means:",
+      "choices": [
+        "A) The model is perfect",
+        "B) The model predicts worse than simply predicting the mean",
+        "C) R-squared can't be negative",
+        "D) The model needs more features"
+      ],
+      "correct": 1,
+      "explanation": "Negative OOS R² means the model's predictions increase forecast error vs the naive mean forecast. Common with many features vs limited signal — expected with 28 features vs the paper's 900.",
+      "tags": [
+        "oos_r2",
+        "kelly",
+        "prediction_quality"
+      ]
+    },
+    {
+      "id": "projects_002",
+      "topic": "projects",
+      "subtopic": "turnover_cost",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "kelly_ml",
+      "question": "In your Kelly project, all models have negative net-of-cost Sharpe because:",
+      "choices": [
+        "A) The models don't work",
+        "B) ~70% monthly turnover generates costs that exceed the gross alpha",
+        "C) Transaction costs are too high",
+        "D) The risk-free rate is too high"
+      ],
+      "correct": 1,
+      "explanation": "Turnover ~70%/month means near-complete portfolio replacement monthly. At 10bps round-trip, annual cost drag is massive. The gross Sharpe (0.07-0.08) is too thin to survive these costs.",
+      "tags": [
+        "turnover",
+        "transaction_costs",
+        "net_sharpe",
+        "kelly"
+      ]
+    },
+    {
+      "id": "projects_003",
+      "topic": "projects",
+      "subtopic": "qlike",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "vol_forecasting",
+      "question": "QLIKE loss function is preferred for volatility forecasting because:",
+      "choices": [
+        "A) It's simpler to compute",
+        "B) It penalizes relative forecast errors, not absolute — so underpredicting low-vol periods isn't drowned out by high-vol periods",
+        "C) It always gives lower numbers",
+        "D) It's the only loss function that works"
+      ],
+      "correct": 1,
+      "explanation": "QLIKE = mean(RV/forecast + log(forecast)). It measures relative accuracy, making it robust across different vol regimes. MSE in absolute terms is dominated by high-vol periods.",
+      "tags": [
+        "qlike",
+        "vol_forecasting",
+        "loss_function"
+      ]
+    },
+    {
+      "id": "projects_004",
+      "topic": "projects",
+      "subtopic": "ewma",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "vol_forecasting",
+      "question": "EWMA volatility with lambda=0.94 means:",
+      "choices": [
+        "A) All past observations get equal weight",
+        "B) Recent returns get 94% weight, older returns get exponentially less",
+        "C) Only the last 94 days are used",
+        "D) Volatility is constant"
+      ],
+      "correct": 1,
+      "explanation": "EWMA: sigma²_t = lambda × sigma²_{t-1} + (1-lambda) × r²_t. Lambda=0.94 means yesterday's variance gets 94% weight, today's squared return gets 6%. Older data decays exponentially.",
+      "tags": [
+        "ewma",
+        "lambda",
+        "exponential_decay"
+      ]
+    },
+    {
+      "id": "projects_005",
+      "topic": "projects",
+      "subtopic": "garch",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "vol_forecasting",
+      "question": "GARCH(1,1) differs from EWMA by:",
+      "choices": [
+        "A) Using log returns instead of simple returns",
+        "B) Including a long-run variance term that provides mean reversion",
+        "C) Being non-parametric",
+        "D) Not using past variance"
+      ],
+      "correct": 1,
+      "explanation": "GARCH(1,1): sigma²_t = omega + alpha×r²_{t-1} + beta×sigma²_{t-1}. The omega term pulls variance toward a long-run level, so GARCH vol mean-reverts. EWMA is actually GARCH with omega=0.",
+      "tags": [
+        "garch",
+        "ewma",
+        "mean_reversion"
+      ]
+    },
+    {
+      "id": "projects_006",
+      "topic": "projects",
+      "subtopic": "har_rv",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "vol_forecasting",
+      "question": "HAR-RV (Corsi 2009) uses three realized volatility components:",
+      "choices": [
+        "A) Open, high, low",
+        "B) Daily, weekly, monthly",
+        "C) Stocks, bonds, commodities",
+        "D) Mean, median, mode"
+      ],
+      "correct": 1,
+      "explanation": "HAR-RV = alpha + beta_d × RV_daily + beta_w × RV_weekly + beta_m × RV_monthly. It captures the heterogeneous nature of vol: different trader horizons drive different vol components.",
+      "tags": [
+        "har_rv",
+        "corsi",
+        "realized_vol"
+      ]
+    },
+    {
+      "id": "projects_007",
+      "topic": "projects",
+      "subtopic": "vol_targeting",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "vol_forecasting",
+      "question": "Vol-targeting improved the portfolio's max drawdown from -43% to -16% by:",
+      "choices": [
+        "A) Always being fully invested",
+        "B) Scaling positions inversely with forecasted vol — reducing exposure in volatile markets",
+        "C) Only investing in low-vol stocks",
+        "D) Using stop-losses"
+      ],
+      "correct": 1,
+      "explanation": "Vol targeting: weight_t = target_vol / forecast_vol_t. When vol spikes (crisis), the strategy automatically reduces exposure. When vol is low, it increases. This compresses the return distribution — lower kurtosis, shallower drawdowns.",
+      "tags": [
+        "vol_targeting",
+        "drawdown",
+        "position_sizing"
+      ]
+    },
+    {
+      "id": "projects_008",
+      "topic": "projects",
+      "subtopic": "mz_r2",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "vol_forecasting",
+      "question": "Mincer-Zarnowitz R² measures how well a volatility forecast predicts realized volatility by regressing realized on forecasted.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 1,
+      "explanation": "MZ regression: RV_t = a + b × Forecast_t + epsilon. R² tells you the forecast's explanatory power. b should be near 1 (unbiased), a near 0. Your results: VIX had highest MZ R² at 50.6%.",
+      "tags": [
+        "mincer_zarnowitz",
+        "r_squared",
+        "vol_forecasting"
+      ]
+    },
+    {
+      "id": "projects_009",
+      "topic": "projects",
+      "subtopic": "hmm_states",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "regime_detection",
+      "question": "Your HMM regime detection model identifies three states. In order of market behavior, they are:",
+      "choices": [
+        "A) Growth, inflation, recession",
+        "B) Bull, Stress, Crisis",
+        "C) Long, short, neutral",
+        "D) High-vol, medium-vol, low-vol"
+      ],
+      "correct": 1,
+      "explanation": "The 3-state HMM labels regimes by their return/vol characteristics: Bull (high return, low vol, Sharpe ~1.0), Stress (moderate return, higher vol), Crisis (low/negative return, high vol, Sharpe ~0.3).",
+      "tags": [
+        "hmm",
+        "regimes",
+        "bull_stress_crisis"
+      ]
+    },
+    {
+      "id": "projects_010",
+      "topic": "projects",
+      "subtopic": "label_switching",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "regime_detection",
+      "question": "The label switching problem in HMMs is:",
+      "choices": [
+        "A) Labels are too long",
+        "B) State numbering is arbitrary — state 1 in one fit might be state 3 in another",
+        "C) Labels can't be strings",
+        "D) Only binary labels work"
+      ],
+      "correct": 1,
+      "explanation": "HMMs assign arbitrary state numbers. In walk-forward refitting, 'state 1' might be Bull in one window and Crisis in another. You must map states to labels at prediction time using return/vol characteristics, not rely on state numbering.",
+      "tags": [
+        "label_switching",
+        "hmm",
+        "walk_forward"
+      ]
+    },
+    {
+      "id": "projects_011",
+      "topic": "projects",
+      "subtopic": "walk_forward",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "regime_detection",
+      "question": "Walk-forward regime detection means:",
+      "choices": [
+        "A) Looking at all data at once",
+        "B) Refitting the model periodically using only past data, never peeking ahead",
+        "C) Walking through the building",
+        "D) Using only the most recent month"
+      ],
+      "correct": 1,
+      "explanation": "Walk-forward: at each refit point (e.g., quarterly), fit the HMM using only data up to that point. Predict forward. Never use future data. This mimics how the model would actually be used in real time.",
+      "tags": [
+        "walk_forward",
+        "regime_detection",
+        "no_lookahead"
+      ]
+    },
+    {
+      "id": "projects_012",
+      "topic": "projects",
+      "subtopic": "regime_var",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "regime_detection",
+      "question": "In your regime detection results, Crisis VaR was approximately:",
+      "choices": [
+        "A) Equal to unconditional VaR",
+        "B) 1.2x unconditional VaR",
+        "C) 0.5x unconditional VaR",
+        "D) 3x unconditional VaR"
+      ],
+      "correct": 1,
+      "explanation": "Crisis-conditional VaR was 1.2x the unconditional estimate. This seems modest but Crisis CVaR was 1.3x — the tail gets worse. Regime-conditional risk metrics give more accurate real-time risk estimates.",
+      "tags": [
+        "var",
+        "regime",
+        "crisis",
+        "conditional"
+      ]
+    },
+    {
+      "id": "projects_013",
+      "topic": "projects",
+      "subtopic": "kelly_interpretation",
+      "difficulty": 2,
+      "type": "explain",
+      "source": "kelly_ml",
+      "question": "Your Kelly ML project shows: RF Sharpe 0.07, GBT 0.08, OOS R² negative for all, but decile monotonicity D10 ~25% vs D3 ~13%. How do you present this to someone evaluating your skills?",
+      "choices": null,
+      "correct": null,
+      "explanation": "Frame honestly: OOS R² is negative because 28 features can't replicate a 900-feature model. But the signal exists — decile monotonicity shows top-predicted stocks outperform bottom by ~12% annually. The challenge is implementation: 70% turnover kills net Sharpe. This demonstrates understanding of the full pipeline (features → prediction → portfolio → evaluation) and the realistic challenges of ML in finance (alpha is thin, costs matter, OOS is harder than in-sample).",
+      "rubric": "Should be honest about limitations, highlight what DID work (monotonicity), and demonstrate understanding of the full pipeline and real-world challenges.",
+      "tags": [
+        "kelly",
+        "presentation",
+        "honest_evaluation"
+      ]
+    },
+    {
+      "id": "projects_014",
+      "topic": "projects",
+      "subtopic": "ff_alpha",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "kelly_ml",
+      "question": "Fama-French alpha measures:",
+      "choices": [
+        "A) Total portfolio return",
+        "B) Return after controlling for market, size, and value factor exposures",
+        "C) The portfolio's beta",
+        "D) Tracking error"
+      ],
+      "correct": 1,
+      "explanation": "FF alpha = intercept of regressing strategy returns on MKT, SMB, HML. It's the return that can't be explained by exposure to these three factors — pure strategy-specific value-add.",
+      "tags": [
+        "fama_french",
+        "alpha",
+        "factor_adjusted"
+      ]
+    },
+    {
+      "id": "projects_015",
+      "topic": "projects",
+      "subtopic": "vol_ranking",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "vol_forecasting",
+      "question": "In your vol forecasting results, the QLIKE ranking (best to worst) was:",
+      "choices": [
+        "A) EWMA > GARCH > HAR > VIX",
+        "B) HAR-RV > GARCH > VIX > EWMA",
+        "C) VIX > HAR > GARCH > EWMA",
+        "D) All models were equal"
+      ],
+      "correct": 1,
+      "explanation": "HAR-RV (0.088) > GARCH (0.089) > VIX (0.094) > EWMA (0.096). The more sophisticated models incorporating multiple time horizons (HAR) or mean-reversion (GARCH) beat simpler approaches.",
+      "tags": [
+        "qlike",
+        "ranking",
+        "vol_models"
+      ]
+    },
+    {
+      "id": "projects_016",
+      "topic": "projects",
+      "subtopic": "vol_target_sharpe",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "vol_forecasting",
+      "question": "Vol-targeting improved SPY's Sharpe ratio from 0.714 to 0.753. The bigger benefit was:",
+      "choices": [
+        "A) Higher returns",
+        "B) Dramatically reduced max drawdown (-43% to -16%) and lower kurtosis",
+        "C) Lower transaction costs",
+        "D) Better correlation structure"
+      ],
+      "correct": 1,
+      "explanation": "Vol targeting's main value isn't Sharpe improvement (modest) — it's tail risk reduction. Kurtosis dropped from 12.3 to 2.4 (near-normal distribution) and max drawdown halved. The strategy becomes much more 'investable'.",
+      "tags": [
+        "vol_targeting",
+        "tail_risk",
+        "kurtosis",
+        "investability"
+      ]
+    },
+    {
+      "id": "projects_017",
+      "topic": "projects",
+      "subtopic": "elastic_net",
+      "difficulty": 2,
+      "type": "true_false",
+      "source": "kelly_ml",
+      "question": "Elastic net combines L1 (Lasso) and L2 (Ridge) regularization, allowing it to both select features and handle correlated predictors.",
+      "choices": [
+        "False",
+        "True"
+      ],
+      "correct": 1,
+      "explanation": "L1 (Lasso) drives some coefficients to exactly zero (feature selection). L2 (Ridge) shrinks correlated features together. Elastic net gets both benefits — important with 28 correlated financial features.",
+      "tags": [
+        "elastic_net",
+        "regularization",
+        "lasso",
+        "ridge"
+      ]
+    },
+    {
+      "id": "projects_018",
+      "topic": "projects",
+      "subtopic": "regime_transitions",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "regime_detection",
+      "question": "Your transition matrix shows diagonal entries > 0.96. This means:",
+      "choices": [
+        "A) States are unstable",
+        "B) Regimes are highly persistent — once in a state, you tend to stay",
+        "C) All states are equally likely",
+        "D) The model doesn't work"
+      ],
+      "correct": 1,
+      "explanation": "Diagonal > 0.96 means >96% chance of staying in the same regime tomorrow. Regimes are 'sticky' — they persist for extended periods before transitioning. Bull→Crisis is near-zero; crises develop through Stress first.",
+      "tags": [
+        "transition_matrix",
+        "persistence",
+        "hmm"
+      ]
+    },
+    {
+      "id": "projects_019",
+      "topic": "projects",
+      "subtopic": "factor_correlation_shift",
+      "difficulty": 3,
+      "type": "multiple_choice",
+      "source": "regime_detection",
+      "question": "In your regime results, MKT-SMB correlation went from 0.38 (Bull) to 0.08 (Crisis). This suggests:",
+      "choices": [
+        "A) Nothing meaningful",
+        "B) In crisis, size premium decorrelates from market — small-cap behavior becomes more idiosyncratic",
+        "C) The data is wrong",
+        "D) SMB stops working"
+      ],
+      "correct": 1,
+      "explanation": "Factor correlations shift across regimes. In Bull markets, risk appetite drives both MKT and SMB together. In Crisis, systematic selling hits large-caps (market) differently than small-caps (size). Factor models calibrated in one regime may misjudge risk in another.",
+      "tags": [
+        "factor_correlation",
+        "regime_shift",
+        "smb",
+        "crisis"
+      ]
+    },
+    {
+      "id": "projects_020",
+      "topic": "projects",
+      "subtopic": "vol_forecast_choice",
+      "difficulty": 2,
+      "type": "explain",
+      "source": "vol_forecasting",
+      "question": "If you could only use one volatility model for a vol-targeting strategy, which would you choose and why?",
+      "choices": null,
+      "correct": null,
+      "explanation": "HAR-RV: best QLIKE (0.088), captures multiple time horizons (daily, weekly, monthly), simple linear model (easy to implement and interpret), and second-best MZ R² (46.2%). VIX has higher MZ R² (50.6%) but requires market data access and reflects implied (not realized) vol. GARCH is good but HAR is simpler with comparable performance. For a vol-targeting strategy, the goal is rank-ordering (is vol high or low?) more than point estimation — HAR excels at this.",
+      "rubric": "Should pick a specific model with reasoning, compare at least two alternatives, and connect the choice to the vol-targeting use case.",
+      "tags": [
+        "vol_model",
+        "choice",
+        "har_rv",
+        "practical"
+      ]
+    },
+    {
+      "id": "projects_021",
+      "topic": "projects",
+      "subtopic": "streamlit_caching",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "risk_dashboard",
+      "question": "@st.cache_data in the risk dashboard is used to:",
+      "choices": [
+        "A) Make the app look prettier",
+        "B) Avoid re-downloading market data on every interaction",
+        "C) Store passwords",
+        "D) Speed up the CPU"
+      ],
+      "correct": 1,
+      "explanation": "Streamlit re-runs the entire script on each interaction. @st.cache_data caches function results so expensive operations (like yfinance downloads) only run once per unique input.",
+      "tags": [
+        "streamlit",
+        "caching",
+        "performance"
+      ]
+    },
+    {
+      "id": "projects_022",
+      "topic": "projects",
+      "subtopic": "gbt_vs_rf",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "kelly_ml",
+      "question": "Gradient Boosted Trees outperformed Random Forest in your Kelly project (Sharpe 0.08 vs 0.07) likely because:",
+      "choices": [
+        "A) GBT uses more trees",
+        "B) GBT iteratively corrects errors from previous trees, focusing on hard-to-predict stocks",
+        "C) RF can't handle financial data",
+        "D) GBT is always better"
+      ],
+      "correct": 1,
+      "explanation": "GBT builds trees sequentially, with each tree correcting the residual errors of the previous ensemble. This iterative error-correction can capture subtle patterns that RF's parallel, independent trees miss.",
+      "tags": [
+        "gbt",
+        "random_forest",
+        "boosting",
+        "ensemble"
+      ]
+    },
+    {
+      "id": "projects_023",
+      "topic": "projects",
+      "subtopic": "decile_monotonicity",
+      "difficulty": 2,
+      "type": "multiple_choice",
+      "source": "kelly_ml",
+      "question": "Decile monotonicity means:",
+      "choices": [
+        "A) All deciles have the same return",
+        "B) Returns increase (or decrease) consistently from the lowest to highest prediction decile",
+        "C) The model perfectly predicts returns",
+        "D) Deciles are equally sized"
+      ],
+      "correct": 1,
+      "explanation": "If D1 (lowest predicted) returns 5% and D10 (highest predicted) returns 25% with a smooth gradient between, the signal has monotonic predictive power — even if point predictions are noisy, the ranking is informative.",
+      "tags": [
+        "decile_monotonicity",
+        "ranking",
+        "signal_quality"
+      ]
+    },
+    {
+      "id": "projects_024",
+      "topic": "projects",
+      "subtopic": "regime_sharpe",
+      "difficulty": 1,
+      "type": "multiple_choice",
+      "source": "regime_detection",
+      "question": "Your regime detection shows Bull Sharpe ~1.03 and Crisis Sharpe ~0.32. The key takeaway is:",
+      "choices": [
+        "A) Never invest during a crisis",
+        "B) Risk-adjusted returns vary dramatically across regimes — regime awareness should inform position sizing",
+        "C) The market always crashes",
+        "D) Sharpe ratio doesn't work"
+      ],
+      "correct": 1,
+      "explanation": "Regime-conditional Sharpe varies 3x from Bull to Crisis. This supports vol-targeting and regime-aware risk management — reduce exposure in detected Crisis, increase in Bull. The regime signal has practical value even if imperfect.",
+      "tags": [
+        "regime",
+        "sharpe",
+        "position_sizing",
+        "practical"
+      ]
+    },
+    {
+      "id": "projects_025",
+      "topic": "projects",
+      "subtopic": "project_synthesis",
+      "difficulty": 3,
+      "type": "explain",
+      "source": "all_projects",
+      "question": "You've built 4 projects: Kelly ML, vol forecasting, regime detection, and a risk dashboard. If an interviewer asks 'what's the common thread?', what do you say?",
+      "choices": null,
+      "correct": null,
+      "explanation": "Common thread: measuring and managing risk in different dimensions. Kelly ML: can ML predict returns? (Answer: marginally, but costs kill it — demonstrating why implementation matters as much as signals.) Vol forecasting: can we predict risk itself? (Yes — HAR/GARCH beat naive, enabling vol-targeting.) Regime detection: how does risk change across market states? (Factor correlations, VaR, and Sharpe all shift dramatically.) Risk dashboard: can we monitor all of this in real-time? (Interactive tool bringing it together.) The progression goes from predicting returns → predicting risk → detecting risk regimes → monitoring risk live.",
+      "rubric": "Should identify a unifying theme (risk measurement/management), connect all 4 projects coherently, and show intellectual progression.",
+      "tags": [
+        "synthesis",
+        "portfolio",
+        "interview",
+        "narrative"
+      ]
+    }
+  ]
+}
